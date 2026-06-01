@@ -248,9 +248,7 @@ export default function ResultsPage({
                     maxWidth: "100% !important",
                     boxSizing: "border-box !important",
                     marginTop: "8px",
-                    paddingTop: "4px",
-                    paddingBottom: "4px",
-                    overflow: "hidden",
+                    padding: "4px 16px",
                   }}
                 />
               ) : (
