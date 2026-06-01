@@ -17,3 +17,9 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Center beehiiv embedded form widgets regardless of parent flex context */
+[data-beehiiv-form] {
+  margin: 0 auto !important;
+  display: block !important;
+}
