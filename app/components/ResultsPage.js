@@ -161,7 +161,7 @@ export default function ResultsPage({
 
           {/* Label */}
           <p style={{
-            fontSize: "0.75rem",
+            fontSize: "0.875rem",
             fontWeight: 600,
             textTransform: "uppercase",
             letterSpacing: "0.1em",
@@ -234,7 +234,7 @@ export default function ResultsPage({
               <p style={{ color: "#1A2B48CC", fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}>
                 What this means for you specifically, how you compare to every other type, and the exact next steps for where you are right now.
               </p>
-              <p style={{ color: "#1A2B48", fontSize: "0.75rem", margin: 0 }}>
+              <p style={{ color: "#1A2B48", fontSize: "0.875rem", margin: 0 }}>
                 Free. Sent to your inbox.
               </p>
 
