@@ -250,7 +250,7 @@ export default function ResultsPage({
                     maxWidth: "100% !important",
                     boxSizing: "border-box !important",
                     marginTop: "8px",
-                    padding: "4px 16px",
+                    padding: "4px 0",
                   }}
                 />
               ) : (

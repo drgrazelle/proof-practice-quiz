@@ -37,7 +37,7 @@ export default function Home() {
         </h1>
 
         {/* Subline */}
-        <p className="text-slate text-base sm:text-lg mb-10 leading-relaxed whitespace-nowrap">
+        <p className="text-slate text-base sm:text-lg mb-10 leading-relaxed text-center max-w-sm mx-auto">
           12 questions. 3 minutes. Find out which piece you&apos;re missing.
         </p>
 
