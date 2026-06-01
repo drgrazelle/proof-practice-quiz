@@ -30,7 +30,7 @@ export default function RestarterPage() {
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "a2ec281a-40fd-4cea-ad30-b6ea8e35246c",
       }}
-      gateCardWidth="92%"
+      gateCardWidth="85%"
       accentBorder="border-golden"
       accentText="text-golden"
       pillars={PILLARS}

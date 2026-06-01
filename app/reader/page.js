@@ -30,7 +30,7 @@ export default function ReaderPage() {
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "0f0ff9c4-ed4b-46f6-99b7-3dbe167164ef",
       }}
-      gateCardWidth="92%"
+      gateCardWidth="85%"
       accentBorder="border-proof"
       accentText="text-proof"
       pillars={PILLARS}

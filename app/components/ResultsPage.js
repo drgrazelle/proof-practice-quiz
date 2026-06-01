@@ -21,7 +21,7 @@ export default function ResultsPage({
   strengthSentence,
   whatYouNeed,
   blurContent,
-  gateCardWidth = "82%",
+  gateCardWidth = "85%",
   embedScript,        // { src, formId } — when provided, injects beehiiv into #beehiiv-embed-target
   accentBorder,
   accentText,
@@ -230,6 +230,7 @@ export default function ResultsPage({
               textAlign: "center",
               gap: "10px",
               boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+              minHeight: embedScript ? "280px" : undefined,
               opacity: phase >= 2 ? 1 : 0,
               transition: "opacity 0.5s ease-in-out",
               pointerEvents: phase >= 2 ? "auto" : "none",

@@ -30,7 +30,7 @@ export default function BelieverPage() {
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "124320b8-2743-4316-a034-b1bc468c0acf",
       }}
-      gateCardWidth="92%"
+      gateCardWidth="85%"
       accentBorder="border-purpose"
       accentText="text-purpose"
       pillars={PILLARS}
