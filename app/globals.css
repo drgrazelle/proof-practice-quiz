@@ -20,32 +20,31 @@ body {
 
 /*
   Beehiiv injects: #beehiiv-embed-target > div > iframe
-  The wrapper div has no styles. The iframe has inline style:
-  width:100%; which overrides margin:auto centering.
-  Fix: make the wrapper div a flex container that centers the iframe,
-  and make the iframe fill it so the form is not pinned left.
+  The wrapper div has no styles. The iframe gets width set via postMessage
+  from the form content (its natural width in fluid mode).
+
+  DO NOT override iframe width with 100% — that forces the iframe wider
+  than its natural size and makes the form content appear left-aligned
+  inside a too-wide iframe (cross-origin, can't fix from outside).
+
+  Instead: make the wrapper a flex container that centers the iframe at
+  whatever natural width beehiiv gives it. max-width: 100% prevents
+  overflow on narrow screens.
 */
 
-/* Wrapper div beehiiv inserts — make it a centered flex column */
+/* Wrapper div beehiiv inserts — center the iframe as a flex child */
 #beehiiv-embed-target > div {
   display: flex !important;
   justify-content: center !important;
   width: 100% !important;
 }
 
-/* iframe sits inside that wrapper — fill it fully so the form content centers */
+/* Let beehiiv control iframe width; just prevent overflow and center it */
 #beehiiv-embed-target > div > iframe {
-  width: 100% !important;
   max-width: 100% !important;
 }
 
-/*
-  On mobile the gate card's 24px horizontal padding eats into the
-  available width for the beehiiv form. Reduce padding and widen
-  the card so the form has as much horizontal room as possible.
-  The real fix is setting the beehiiv form width to Fluid in their
-  form builder — this is the code-side backup.
-*/
+/* On mobile: widen gate card and reduce padding so the form has max room */
 @media (max-width: 640px) {
   #gate-card {
     width: 96% !important;
