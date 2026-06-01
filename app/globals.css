@@ -38,3 +38,18 @@ body {
   width: 100% !important;
   max-width: 100% !important;
 }
+
+/*
+  On mobile the gate card's 24px horizontal padding eats into the
+  available width for the beehiiv form. Reduce padding and widen
+  the card so the form has as much horizontal room as possible.
+  The real fix is setting the beehiiv form width to Fluid in their
+  form builder — this is the code-side backup.
+*/
+@media (max-width: 640px) {
+  #gate-card {
+    width: 96% !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}

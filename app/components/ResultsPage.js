@@ -205,7 +205,7 @@ export default function ResultsPage({
             </div>
 
             {/* Gate card — in normal flow, its height drives the container */}
-            <div style={{
+            <div id="gate-card" style={{
               position: "relative",
               width: "90%",
               marginLeft: "auto",
