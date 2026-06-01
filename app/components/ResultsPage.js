@@ -157,6 +157,7 @@ export default function ResultsPage({
           border: `2px solid ${missingPieceBorderColor}`,
           backgroundColor: "#1E3358",
           padding: "20px 24px 0",
+          minHeight: "400px",
         }}>
 
           {/* Label */}
@@ -165,7 +166,7 @@ export default function ResultsPage({
             fontWeight: 600,
             textTransform: "uppercase",
             letterSpacing: "0.1em",
-            color: "rgba(158,172,192,0.7)",
+            color: missingPieceBorderColor,
             marginBottom: "12px",
           }}>
             Your missing piece
@@ -205,7 +206,7 @@ export default function ResultsPage({
             {/* Gate card — in normal flow, its height drives the container */}
             <div style={{
               position: "relative",
-              width: gateCardWidth,
+              width: "80%",
               marginLeft: "auto",
               marginRight: "auto",
               zIndex: 1,
@@ -213,14 +214,15 @@ export default function ResultsPage({
               backdropFilter: "blur(2px)",
               WebkitBackdropFilter: "blur(2px)",
               borderRadius: "12px",
-              padding: "24px 20px",
+              padding: "24px",
+              boxSizing: "border-box",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               textAlign: "center",
               gap: "10px",
               boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-              minHeight: embedScript ? "280px" : undefined,
+              minHeight: embedScript ? "320px" : undefined,
               opacity: phase >= 2 ? 1 : 0,
               transition: "opacity 0.5s ease-in-out",
               pointerEvents: phase >= 2 ? "auto" : "none",
