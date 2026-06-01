@@ -26,6 +26,11 @@ export default function ReaderPage() {
       strengthSentence="You know what the science says, and you can tell the difference between evidence and marketing. That foundation is real and it's the hardest piece for most people to get right."
       whatYouNeed="A Practice system flexible enough to survive your actual life. And a Purpose deep enough to carry you through the weeks when nothing feels worth it. That's what Proof & Practice is built to give you."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "0f0ff9c4-ed4b-46f6-99b7-3dbe167164ef",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-proof"
       accentText="text-proof"
       pillars={PILLARS}

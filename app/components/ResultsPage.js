@@ -223,7 +223,7 @@ export default function ResultsPage({
               backdropFilter: "blur(2px)",
               WebkitBackdropFilter: "blur(2px)",
               borderRadius: "12px",
-              padding: "18px 24px",
+              padding: "24px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -278,15 +278,17 @@ export default function ResultsPage({
         </div>
         {/* end missing piece box */}
 
-        {/* ── BeeHiiv placeholder ── */}
-        <div
-          id="optin-form"
-          className="w-full rounded-xl border-2 border-dashed border-steel/30 bg-navy/40 px-6 py-10 flex items-center justify-center"
-        >
-          <p className="text-steel/50 text-sm font-semibold tracking-widest uppercase text-center">
-            BEEHIIV FORM GOES HERE
-          </p>
-        </div>
+        {/* ── BeeHiiv placeholder (only shown when no embed is configured) ── */}
+        {!embedScript && (
+          <div
+            id="optin-form"
+            className="w-full rounded-xl border-2 border-dashed border-steel/30 bg-navy/40 px-6 py-10 flex items-center justify-center"
+          >
+            <p className="text-steel/50 text-sm font-semibold tracking-widest uppercase text-center">
+              BEEHIIV FORM GOES HERE
+            </p>
+          </div>
+        )}
 
         {/* ── Social share ── */}
         <div className="w-full">

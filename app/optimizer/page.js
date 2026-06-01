@@ -26,6 +26,11 @@ export default function OptimizerPage() {
       strengthSentence="You show up. You've built habits that hold their shape better than most people manage. That consistency is the muscle most people never develop."
       whatYouNeed="The evidence layer that helps you separate what actually works from what's well-marketed. And a reason that lives deeper than the routine itself, so when the routine breaks, you know why you're rebuilding it."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "db75c8f8-5bd9-4701-a1c8-223fa0a8dc94",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-practice"
       accentText="text-practice"
       pillars={PILLARS}

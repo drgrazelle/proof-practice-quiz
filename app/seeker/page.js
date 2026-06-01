@@ -26,6 +26,11 @@ export default function SeekerPage() {
       strengthSentence="You know why your health matters in a way most people never figure out. That clarity is the rarest piece of the whole framework."
       whatYouNeed="An evidence foundation that separates what actually works from what's been packaged to look like it does. And a practical system flexible enough to carry your reason through real life, not just the easy weeks."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "b5e8aacd-c5c4-4102-a5dd-c7922e58faaf",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-purpose"
       accentText="text-purpose"
       pillars={PILLARS}

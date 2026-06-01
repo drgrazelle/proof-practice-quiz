@@ -26,6 +26,11 @@ export default function DevotedPage() {
       strengthSentence="You show up consistently and you do it for reasons that matter. That combination is rare. Most people are missing one or both."
       whatYouNeed="The evidence foundation. The right framework for evaluating what you already encounter. The ability to recognize what decades of research actually point to, so your consistency and your purpose have the best possible target."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "d854fc1d-f157-4716-96e1-e88f162a24b7",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-practice"
       accentText="text-practice"
       pillars={PILLARS}

@@ -26,6 +26,11 @@ export default function BelieverPage() {
       strengthSentence="You have the rarest combination most people are still searching for: real evidence to stand on and a real reason to care. The two hardest pieces are already yours."
       whatYouNeed="The Dial Method. A framework for operating across the full spectrum of effort, so that a hard week is an adjustment instead of a failure. Your knowledge and your purpose are already there. They just need a system that can survive contact with real life."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "124320b8-2743-4316-a034-b1bc468c0acf",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-purpose"
       accentText="text-purpose"
       pillars={PILLARS}

@@ -26,6 +26,11 @@ export default function RestarterPage() {
       strengthSentence="You're still trying. After however many restarts, the impulse to build something is still alive in you. That's the part that matters."
       whatYouNeed="All three pieces. The fundamentals that actually work. A system flexible enough to survive your real life. And a reason deep enough to carry you through the weeks when nothing feels worth it. That's what Proof & Practice is built to give you, one week at a time."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "a2ec281a-40fd-4cea-ad30-b6ea8e35246c",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-golden"
       accentText="text-golden"
       pillars={PILLARS}

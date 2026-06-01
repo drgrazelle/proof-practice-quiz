@@ -26,6 +26,11 @@ export default function BurnerPage() {
       strengthSentence="You've built a real system before. You knew what you were doing and you did it consistently. That's not nothing. That's the proof you can do it again."
       whatYouNeed="Purpose. The kind that connects to something bigger than any single outcome. Something that's still true on the worst Wednesday of the year."
       blurContent={BLUR_CONTENT}
+      embedScript={{
+        src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
+        formId: "05b7494e-7391-4503-9d12-4bbf38e69b7e",
+      }}
+      gateCardWidth="92%"
       accentBorder="border-proof"
       accentText="text-proof"
       pillars={PILLARS}
