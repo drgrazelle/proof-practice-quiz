@@ -18,15 +18,23 @@ body {
   }
 }
 
-/* Center beehiiv embedded form widgets regardless of parent flex context */
-[data-beehiiv-form] {
-  margin: 0 auto !important;
-  display: block !important;
-  text-align: center !important;
+/*
+  Beehiiv injects: #beehiiv-embed-target > div > iframe
+  The wrapper div has no styles. The iframe has inline style:
+  width:100%; which overrides margin:auto centering.
+  Fix: make the wrapper div a flex container that centers the iframe,
+  and make the iframe fill it so the form is not pinned left.
+*/
+
+/* Wrapper div beehiiv inserts — make it a centered flex column */
+#beehiiv-embed-target > div {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
 }
 
-/* Center the iframe beehiiv injects */
-iframe[src*="beehiiv"] {
-  display: block !important;
-  margin: 0 auto !important;
+/* iframe sits inside that wrapper — fill it fully so the form content centers */
+#beehiiv-embed-target > div > iframe {
+  width: 100% !important;
+  max-width: 100% !important;
 }
