@@ -22,4 +22,11 @@ body {
 [data-beehiiv-form] {
   margin: 0 auto !important;
   display: block !important;
+  text-align: center !important;
+}
+
+/* Center the iframe beehiiv injects */
+iframe[src*="beehiiv"] {
+  display: block !important;
+  margin: 0 auto !important;
 }
