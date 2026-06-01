@@ -157,7 +157,6 @@ export default function ResultsPage({
           border: `2px solid ${missingPieceBorderColor}`,
           backgroundColor: "#1E3358",
           padding: "20px 24px 0",
-          minHeight: "400px",
         }}>
 
           {/* Label */}
@@ -180,11 +179,13 @@ export default function ResultsPage({
           ── */}
           <div style={{
             position: "relative",
+            height: "420px",
             overflow: "hidden",
             borderRadius: "0 0 8px 8px",
             marginLeft: "-24px",
             marginRight: "-24px",
             padding: "36px 20px 20px",
+            boxSizing: "border-box",
           }}>
 
             {/* Blurred text — absolute, fills background behind the card */}
@@ -206,7 +207,7 @@ export default function ResultsPage({
             {/* Gate card — in normal flow, its height drives the container */}
             <div style={{
               position: "relative",
-              width: "80%",
+              width: "72%",
               marginLeft: "auto",
               marginRight: "auto",
               zIndex: 1,
@@ -222,7 +223,8 @@ export default function ResultsPage({
               textAlign: "center",
               gap: "10px",
               boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-              minHeight: embedScript ? "320px" : undefined,
+              height: embedScript ? "380px" : undefined,
+              overflow: embedScript ? "hidden" : undefined,
               opacity: phase >= 2 ? 1 : 0,
               transition: "opacity 0.5s ease-in-out",
               pointerEvents: phase >= 2 ? "auto" : "none",
