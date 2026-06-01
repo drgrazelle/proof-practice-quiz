@@ -30,7 +30,8 @@ export default function BurnerPage() {
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "05b7494e-7391-4503-9d12-4bbf38e69b7e",
       }}
-      gateCardWidth="85%"
+      missingPieceBorderColor="#C9BFE3"
+      gateCardWidth="78%"
       accentBorder="border-proof"
       accentText="text-proof"
       pillars={PILLARS}

@@ -30,7 +30,8 @@ export default function OptimizerPage() {
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "db75c8f8-5bd9-4701-a1c8-223fa0a8dc94",
       }}
-      gateCardWidth="85%"
+      missingPieceBorderColor="#F9D08B"
+      gateCardWidth="78%"
       accentBorder="border-practice"
       accentText="text-practice"
       pillars={PILLARS}

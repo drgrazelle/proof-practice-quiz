@@ -30,7 +30,8 @@ export default function DevotedPage() {
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "d854fc1d-f157-4716-96e1-e88f162a24b7",
       }}
-      gateCardWidth="85%"
+      missingPieceBorderColor="#F9D08B"
+      gateCardWidth="78%"
       accentBorder="border-practice"
       accentText="text-practice"
       pillars={PILLARS}

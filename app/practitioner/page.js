@@ -26,7 +26,8 @@ export default function PractitionerPage() {
       strengthSentence="You've put all three pieces in place. That's the whole framework, working together, holding the whole thing up."
       whatYouNeed="Depth, refinement, and company. Proof & Practice exists for exactly where you are. The science behind why what you're doing works, the tools to go further, and a weekly reminder of what your health is actually in service of."
       blurContent={BLUR_CONTENT}
-      gateCardWidth="85%"
+      missingPieceBorderColor="#E6C280"
+      gateCardWidth="78%"
       embedScript={{
         src: "https://subscribe-forms.beehiiv.com/v3/loader.js",
         formId: "8e85d083-290c-4830-8afb-689687badf01",

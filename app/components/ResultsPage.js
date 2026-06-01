@@ -21,7 +21,8 @@ export default function ResultsPage({
   strengthSentence,
   whatYouNeed,
   blurContent,
-  gateCardWidth = "85%",
+  gateCardWidth = "78%",
+  missingPieceBorderColor = "#E6C280",
   embedScript,        // { src, formId } — when provided, injects beehiiv into #beehiiv-embed-target
   accentBorder,
   accentText,
@@ -68,7 +69,6 @@ export default function ResultsPage({
 
   const shareText = `I just took the 3P Quiz and I'm ${archetypeName}. Find out which piece of health consistency you're missing.`;
   const shareUrl  = typeof window !== "undefined" ? window.location.href : "";
-  const [firstSentence] = splitAtFirstSentence(whatYouNeed);
 
   return (
     <main className="min-h-screen bg-navy flex flex-col">
@@ -154,8 +154,8 @@ export default function ResultsPage({
         <div style={{
           width: "100%",
           borderRadius: "12px",
-          border: "1px solid rgba(94,122,158,0.3)",
-          backgroundColor: "rgba(26,43,72,0.6)",
+          border: `2px solid ${missingPieceBorderColor}`,
+          backgroundColor: "#1E3358",
           padding: "20px 24px 0",
         }}>
 
@@ -171,21 +171,11 @@ export default function ResultsPage({
             Your missing piece
           </p>
 
-          {/* First sentence — always readable */}
-          <p style={{
-            fontSize: "1rem",
-            lineHeight: 1.625,
-            color: "#F4F7FA",
-            marginBottom: "16px",
-          }}>
-            {firstSentence}
-          </p>
-
           {/* ── Blur + gate zone ──
               - position:relative container, overflow hidden, no fixed height
               - Blurred text is position:absolute; inset:0 → fills background
               - Gate card is in NORMAL FLOW → sizes the container height
-              - Container padding: 36px top (line above), 20px sides (peek left/right)
+              - Container padding: 36px top (blurred text peeks above card), 20px sides
           ── */}
           <div style={{
             position: "relative",
@@ -223,7 +213,7 @@ export default function ResultsPage({
               backdropFilter: "blur(2px)",
               WebkitBackdropFilter: "blur(2px)",
               borderRadius: "12px",
-              padding: "24px",
+              padding: "24px 20px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
