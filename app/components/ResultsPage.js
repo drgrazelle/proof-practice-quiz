@@ -207,7 +207,7 @@ export default function ResultsPage({
             {/* Gate card — in normal flow, its height drives the container */}
             <div style={{
               position: "relative",
-              width: "72%",
+              width: "68%",
               marginLeft: "auto",
               marginRight: "auto",
               zIndex: 1,
@@ -244,7 +244,15 @@ export default function ResultsPage({
                 // The script appends its form widget here, scoped to this div only.
                 <div
                   id="beehiiv-embed-target"
-                  style={{ width: "100%", marginTop: "8px", paddingTop: "4px", paddingBottom: "4px" }}
+                  style={{
+                    width: "100% !important",
+                    maxWidth: "100% !important",
+                    boxSizing: "border-box !important",
+                    marginTop: "8px",
+                    paddingTop: "4px",
+                    paddingBottom: "4px",
+                    overflow: "hidden",
+                  }}
                 />
               ) : (
                 <button
