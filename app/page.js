@@ -10,7 +10,7 @@ export default function Home() {
           Health Habit Consistency Quiz
         </span>
         <span className="text-slate text-xs tracking-wide hidden sm:block">
-          Grazelle S.
+          Proof &amp; Practice
         </span>
       </header>
 
