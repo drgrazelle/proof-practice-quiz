@@ -16,18 +16,18 @@ export async function GET() {
           justifyContent: "center",
           padding: "80px",
           fontFamily: "sans-serif",
-          position: "relative",
         }}
       >
-        {/* Top label */}
+        {/* Eyebrow pill */}
         <div
           style={{
-            position: "absolute",
-            top: "52px",
-            left: "80px",
             display: "flex",
             alignItems: "center",
             gap: "10px",
+            border: "1px solid rgba(94,122,158,0.4)",
+            borderRadius: "9999px",
+            padding: "8px 20px",
+            marginBottom: "48px",
           }}
         >
           <div
@@ -40,132 +40,59 @@ export async function GET() {
           />
           <span
             style={{
-              color: "#E6C280",
-              fontSize: "15px",
+              color: "#F4F7FA",
+              fontSize: "18px",
               fontWeight: "600",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
+              display: "flex",
             }}
           >
-            Free Self-Assessment
+            Free self-assessment
           </span>
         </div>
 
-        {/* Brand name */}
+        {/* Headline */}
         <div
           style={{
-            position: "absolute",
-            top: "52px",
-            right: "80px",
             color: "#F4F7FA",
-            fontSize: "15px",
-            fontWeight: "600",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            opacity: 0.7,
-            display: "flex",
-          }}
-        >
-          Proof &amp; Practice
-        </div>
-
-        {/* Main headline */}
-        <div
-          style={{
+            fontSize: "58px",
+            fontWeight: "800",
+            lineHeight: "1.15",
+            textAlign: "center",
+            maxWidth: "900px",
+            marginBottom: "32px",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "28px",
-            maxWidth: "900px",
+            gap: "0px",
           }}
         >
-          <div
-            style={{
-              color: "#F4F7FA",
-              fontSize: "52px",
-              fontWeight: "800",
-              lineHeight: "1.15",
-              textAlign: "center",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            There are{" "}
-            <span style={{ color: "#E6C280", margin: "0 14px", display: "flex" }}>
-              7 types of people
-            </span>{" "}
-            who struggle to make health habits stick.
-          </div>
-
-          <div
-            style={{
-              color: "#E6C280",
-              fontSize: "42px",
-              fontWeight: "700",
-              textAlign: "center",
-              display: "flex",
-            }}
-          >
+          <span style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "14px" }}>
+            <span style={{ color: "#F4F7FA" }}>There are</span>
+            <span style={{ color: "#E6C280" }}>7 types of people</span>
+            <span style={{ color: "#F4F7FA" }}>who struggle to</span>
+            <span style={{ color: "#F4F7FA" }}>make health habits stick.</span>
+          </span>
+          <span style={{ color: "#E6C280", marginTop: "28px", display: "flex" }}>
             Which one are you?
-          </div>
-
-          <div
-            style={{
-              color: "#9EACC0",
-              fontSize: "20px",
-              fontWeight: "400",
-              textAlign: "center",
-              display: "flex",
-            }}
-          >
-            12 questions · 3 minutes · Find out which piece you&apos;re missing
-          </div>
+          </span>
         </div>
 
-        {/* Pillar dots */}
+        {/* CTA button */}
         <div
           style={{
-            position: "absolute",
-            bottom: "52px",
+            background: "#E6C280",
+            color: "#1A2B48",
+            fontSize: "22px",
+            fontWeight: "700",
+            padding: "20px 48px",
+            borderRadius: "10px",
+            marginTop: "16px",
             display: "flex",
-            gap: "32px",
-            alignItems: "center",
           }}
         >
-          {[
-            { label: "PROOF", color: "#F9D08B" },
-            { label: "PRACTICE", color: "#A3D9C9" },
-            { label: "PURPOSE", color: "#C9BFE3" },
-          ].map(({ label, color }) => (
-            <div
-              key={label}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}
-            >
-              <div
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  background: color,
-                }}
-              />
-              <span
-                style={{
-                  color: color,
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  letterSpacing: "0.15em",
-                }}
-              >
-                {label}
-              </span>
-            </div>
-          ))}
+          Take the quiz
         </div>
       </div>
     ),
