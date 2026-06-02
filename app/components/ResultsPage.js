@@ -146,24 +146,15 @@ export default function ResultsPage({
           </p>
         </div>
 
-        {/* ── Missing piece — fade-to-gate pattern ──
-            Dark zone: label + blurred text fading out via gradient.
-            Gate zone: cream block in normal flow, full width, beehiiv form inside.
-            No fixed heights, no z-index, no clipping. beehiiv fills its container.
+        {/* ── Missing piece — full-page fade-to-gate ──
+            No box. Blurred text floats on the page bg and fades to navy.
+            Gate band breaks out of the column padding (negative margins)
+            so it runs edge-to-edge, just like The Free Press paywall pattern.
         ── */}
-        <div style={{
-          width: "100%",
-          borderRadius: "12px",
-          border: `2px solid ${missingPieceBorderColor}`,
-          overflow: "hidden",
-        }}>
+        <div className="w-full">
 
-          {/* ── Dark zone: label + blurred text ── */}
-          <div style={{
-            backgroundColor: "#1E3358",
-            padding: "20px 24px 0",
-            position: "relative",
-          }}>
+          {/* Text zone: on page background, no box */}
+          <div style={{ position: "relative", paddingBottom: "0" }}>
 
             {/* Label */}
             <p style={{
@@ -177,12 +168,12 @@ export default function ResultsPage({
               Your missing piece
             </p>
 
-            {/* Blurred text — clipped by maxHeight, fades out via gradient overlay */}
+            {/* Blurred text — clipped, fades into page background */}
             <div style={{
               fontSize: "1rem",
               lineHeight: 1.625,
               color: "#F4F7FA",
-              maxHeight: "130px",
+              maxHeight: "160px",
               overflow: "hidden",
               filter: phase >= 1 ? "blur(5px)" : "blur(0px)",
               transition: "filter 0.5s ease-in-out",
@@ -192,43 +183,44 @@ export default function ResultsPage({
               {blurContent}
             </div>
 
-            {/* Gradient fade: transparent → #1E3358, masks the text cutoff */}
+            {/* Gradient: transparent → page navy #1A2B48 */}
             <div style={{
               position: "absolute",
               bottom: 0,
               left: 0,
               right: 0,
-              height: "72px",
-              background: "linear-gradient(to bottom, transparent, #1E3358)",
+              height: "90px",
+              background: "linear-gradient(to bottom, transparent, #1A2B48)",
               pointerEvents: "none",
             }} />
           </div>
-          {/* end dark zone */}
+          {/* end text zone */}
 
-          {/* ── Gate zone: cream, full width, normal flow ── */}
+          {/* Gate band: breaks out of column px-6 padding, runs edge-to-edge */}
           <div style={{
+            marginLeft: "-24px",
+            marginRight: "-24px",
             backgroundColor: "rgba(255,249,240,0.97)",
-            padding: "28px 24px 32px",
+            padding: "40px 24px 44px",
             textAlign: "center",
             opacity: phase >= 2 ? 1 : 0,
             transition: "opacity 0.5s ease-in-out",
             pointerEvents: phase >= 2 ? "auto" : "none",
           }}>
-            <p style={{ color: "#1A2B48", fontWeight: 700, fontSize: "1.125rem", lineHeight: 1.4, margin: "0 0 10px" }}>
+            <p style={{ color: "#1A2B48", fontWeight: 800, fontSize: "1.25rem", lineHeight: 1.3, margin: "0 0 12px" }}>
               Get the full picture.
             </p>
-            <p style={{ color: "rgba(26,43,72,0.7)", fontSize: "0.875rem", lineHeight: 1.6, margin: "0 0 8px" }}>
+            <p style={{ color: "rgba(26,43,72,0.7)", fontSize: "0.9375rem", lineHeight: 1.6, margin: "0 auto 10px", maxWidth: "480px" }}>
               What this means for you specifically, how you compare to every other type, and the exact next steps for where you are right now.
             </p>
-            <p style={{ color: "#1A2B48", fontSize: "0.8rem", margin: "0 0 16px" }}>
+            <p style={{ color: "#1A2B48", fontSize: "0.8125rem", margin: "0 0 20px", fontStyle: "italic" }}>
               Free. Sent to your inbox.
             </p>
 
             {embedScript ? (
-              // beehiiv fills this div naturally — constrained to 420px max on desktop
               <div
                 id="beehiiv-embed-target"
-                style={{ width: "100%", maxWidth: "420px", margin: "0 auto" }}
+                style={{ width: "100%", maxWidth: "440px", margin: "0 auto" }}
               />
             ) : (
               <button
@@ -237,8 +229,8 @@ export default function ResultsPage({
                   backgroundColor: "#E6C280",
                   color: "#1A2B48",
                   fontWeight: 700,
-                  fontSize: "0.875rem",
-                  padding: "12px 28px",
+                  fontSize: "0.9375rem",
+                  padding: "14px 32px",
                   borderRadius: "8px",
                   border: "none",
                   cursor: "pointer",
@@ -248,10 +240,10 @@ export default function ResultsPage({
               </button>
             )}
           </div>
-          {/* end gate zone */}
+          {/* end gate band */}
 
         </div>
-        {/* end missing piece box */}
+        {/* end missing piece section */}
 
         {/* ── Social share ── */}
         <div className="w-full">
