@@ -27,8 +27,6 @@ export default function ResultsPage({
   accentText,
   pillars,
 }) {
-  const [copied, setCopied] = useState(false);
-
   // phase 0: text fully visible, card hidden
   // phase 1: text blurring in (0.5s transition)
   // phase 2: blur complete, card fading in (0.5s transition)
@@ -55,19 +53,10 @@ export default function ResultsPage({
     container.appendChild(script);
   }, [phase, embedScript]);
 
-  function handleCopy() {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  }
-
   function scrollToForm() {
     document.getElementById("optin-form")?.scrollIntoView({ behavior: "smooth" });
   }
 
-  const shareText = `I just took the 3P Quiz and I'm ${archetypeName}. Find out which piece of health consistency you're missing.`;
-  const shareUrl  = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <main className="min-h-screen bg-navy flex flex-col">
@@ -99,10 +88,7 @@ export default function ResultsPage({
               >
                 <span
                   className="w-2 h-2 rounded-full"
-                  style={isHigh
-                    ? { backgroundColor: "#1A2B48", opacity: 0.4 }
-                    : { backgroundColor: "#9EACC0", opacity: 0.5 }
-                  }
+                  style={{ backgroundColor: isHigh ? "#76C043" : "#E05252" }}
                 />
                 <span
                   className="text-xs font-bold tracking-widest uppercase"
@@ -245,43 +231,7 @@ export default function ResultsPage({
         </div>
         {/* end missing piece section */}
 
-        {/* ── Social share ── */}
-        <div className="w-full">
-          <p className="text-slate/50 text-xs font-semibold tracking-widest uppercase mb-4 text-center">
-            Share your result
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
 
-            <a
-              href={`https://www.threads.net/intent/post?text=${encodeURIComponent(shareText + " " + shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-navy/60 border border-steel/30 text-slate text-sm font-semibold py-3 px-4 rounded-xl hover:border-golden/60 hover:text-golden transition-all"
-            >
-              <ThreadsIcon />
-              Threads
-            </a>
-
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-navy/60 border border-steel/30 text-slate text-sm font-semibold py-3 px-4 rounded-xl hover:border-golden/60 hover:text-golden transition-all"
-            >
-              <LinkedInIcon />
-              LinkedIn
-            </a>
-
-            <button
-              onClick={handleCopy}
-              className="flex-1 flex items-center justify-center gap-2 bg-navy/60 border border-steel/30 text-slate text-sm font-semibold py-3 px-4 rounded-xl hover:border-golden/60 hover:text-golden transition-all"
-            >
-              <CopyIcon />
-              {copied ? "Copied!" : "Copy link"}
-            </button>
-
-          </div>
-        </div>
 
       </div>
 
@@ -296,27 +246,3 @@ export default function ResultsPage({
   );
 }
 
-function ThreadsIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.473 12.01v-.017c.027-3.579.877-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.594 12c.022 3.086.713 5.496 2.051 7.164 1.43 1.781 3.63 2.695 6.54 2.717 2.082-.013 3.816-.494 5.106-1.43 1.25-.906 2.083-2.302 2.474-4.142H12.75v-2.067h9.614c.124.857.166 1.725.115 2.616-.298 5.5-3.775 8.282-9.293 8.35z"/>
-    </svg>
-  );
-}
-
-function LinkedInIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-    </svg>
-  );
-}
-
-function CopyIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
-    </svg>
-  );
-}
