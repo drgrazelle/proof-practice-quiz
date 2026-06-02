@@ -28,13 +28,9 @@ export async function GET() {
             lineHeight: "1.1",
             textAlign: "center",
             display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "20px",
           }}
         >
-          <span style={{ color: "#F4F7FA" }}>Why you keep</span>
-          <span style={{ color: "#E6C280" }}>starting over</span>
+          Here&apos;s why you keep starting over.
         </div>
 
         {/* CTA button */}
