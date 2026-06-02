@@ -69,16 +69,6 @@ export default function FullReportSentPage() {
           Don&apos;t see it? Check your spam folder and move it to your inbox.
         </p>
 
-        {/* Sign-off */}
-        <div className="text-center">
-          <p className="text-slate text-sm font-semibold mb-1">
-            Grazelle 🌱
-          </p>
-          <p className="text-slate/40 text-xs">
-            Proof &amp; Practice — Evidence-based health for people too busy for perfection.
-          </p>
-        </div>
-
       </div>
 
       {/* ── Footer ── */}
