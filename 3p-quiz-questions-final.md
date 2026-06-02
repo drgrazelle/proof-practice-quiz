@@ -7,9 +7,9 @@
 
 ## Quiz Intro
 
-*Quiz title and intro hook are being finalized in the Cowork copywriting skill. Placeholder below.*
+*Quiz title confirmed.*
 
-**[Title placeholder]**
+**Health Habit Consistency Quiz**
 
 Health consistency rests on three pieces. Most people are missing one of them. 12 questions to find out which.
 

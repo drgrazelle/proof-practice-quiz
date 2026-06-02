@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "The 3P Quiz | Proof & Practice",
+  title: "Health Habit Consistency Quiz | Proof & Practice",
   description:
     "12 questions. 3 minutes. Find out which piece of health consistency you're missing.",
 };
