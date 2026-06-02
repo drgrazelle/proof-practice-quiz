@@ -31,7 +31,6 @@ export default function SeekerPage() {
         formId: "b5e8aacd-c5c4-4102-a5dd-c7922e58faaf",
       }}
       missingPieceBorderColor="#C9BFE3"
-      gateCardWidth="78%"
       accentBorder="border-purpose"
       accentText="text-purpose"
       pillars={PILLARS}

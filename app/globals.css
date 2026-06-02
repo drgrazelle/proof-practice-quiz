@@ -20,27 +20,10 @@ body {
 
 /*
   Beehiiv's _renderInline inserts:
-    #beehiiv-embed-target
-      > <script>
-      > <div style="width:100%;max-width:100%;margin:0 auto">  ← beehiiv wrap
-            > <div>                                            ← iframeWrap
-                  > <iframe style="width:100%">
-
-  The iframe is always 100% wide for inline embeds (hardcoded by beehiiv).
-  Centering is handled by beehiiv's own container_horizontal_alignment setting.
-  Do NOT force display:flex on the wrap div — it fights beehiiv's margin:0 auto.
-  Only enforce max-width:100% on the iframe to prevent overflow on narrow screens.
+    #beehiiv-embed-target > div > div > iframe
+  Prevent the iframe from ever overflowing its container on narrow screens.
+  All centering is handled by beehiiv's own alignment setting.
 */
-
 #beehiiv-embed-target > div > div > iframe {
   max-width: 100% !important;
-}
-
-/* On mobile: widen gate card and reduce padding so the form has max room */
-@media (max-width: 640px) {
-  #gate-card {
-    width: 96% !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
 }

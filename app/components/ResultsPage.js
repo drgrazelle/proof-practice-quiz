@@ -21,7 +21,6 @@ export default function ResultsPage({
   strengthSentence,
   whatYouNeed,
   blurContent,
-  gateCardWidth = "78%",
   missingPieceBorderColor = "#E6C280",
   embedScript,        // { src, formId } — when provided, injects beehiiv into #beehiiv-embed-target
   accentBorder,
@@ -147,145 +146,112 @@ export default function ResultsPage({
           </p>
         </div>
 
-        {/* ── Missing piece (gated) ──
-            Outer box: label + first sentence above, blur zone below.
-            No fixed height anywhere — content sizes the box.
+        {/* ── Missing piece — fade-to-gate pattern ──
+            Dark zone: label + blurred text fading out via gradient.
+            Gate zone: cream block in normal flow, full width, beehiiv form inside.
+            No fixed heights, no z-index, no clipping. beehiiv fills its container.
         ── */}
         <div style={{
           width: "100%",
           borderRadius: "12px",
           border: `2px solid ${missingPieceBorderColor}`,
-          backgroundColor: "#1E3358",
-          padding: "20px 24px 0",
+          overflow: "hidden",
         }}>
 
-          {/* Label */}
-          <p style={{
-            fontSize: "0.875rem",
-            fontWeight: 600,
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: missingPieceBorderColor,
-            marginBottom: "12px",
-          }}>
-            Your missing piece
-          </p>
-
-          {/* ── Blur + gate zone ──
-              - position:relative container, overflow hidden, no fixed height
-              - Blurred text is position:absolute; inset:0 → fills background
-              - Gate card is in NORMAL FLOW → sizes the container height
-              - Container padding: 36px top (blurred text peeks above card), 20px sides
-          ── */}
+          {/* ── Dark zone: label + blurred text ── */}
           <div style={{
+            backgroundColor: "#1E3358",
+            padding: "20px 24px 0",
             position: "relative",
-            height: "420px",
-            overflow: "hidden",
-            borderRadius: "0 0 8px 8px",
-            marginLeft: "-24px",
-            marginRight: "-24px",
-            padding: "36px 20px 20px",
-            boxSizing: "border-box",
           }}>
 
-            {/* Blurred text — absolute, fills background behind the card */}
+            {/* Label */}
+            <p style={{
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: missingPieceBorderColor,
+              marginBottom: "16px",
+            }}>
+              Your missing piece
+            </p>
+
+            {/* Blurred text — clipped by maxHeight, fades out via gradient overlay */}
             <div style={{
-              position: "absolute",
-              inset: 0,
-              padding: "16px 20px",
               fontSize: "1rem",
               lineHeight: 1.625,
               color: "#F4F7FA",
+              maxHeight: "130px",
+              overflow: "hidden",
+              filter: phase >= 1 ? "blur(5px)" : "blur(0px)",
+              transition: "filter 0.5s ease-in-out",
               userSelect: "none",
               WebkitUserSelect: "none",
-              filter: phase >= 1 ? "blur(8px)" : "blur(0px)",
-              transition: "filter 0.5s ease-in-out",
             }}>
               {blurContent}
             </div>
 
-            {/* Gate card — in normal flow, its height drives the container */}
-            <div id="gate-card" style={{
-              position: "relative",
-              width: "90%",
-              marginLeft: "auto",
-              marginRight: "auto",
-              zIndex: 1,
-              backgroundColor: "rgba(255,249,240,0.92)",
-              backdropFilter: "blur(2px)",
-              WebkitBackdropFilter: "blur(2px)",
-              borderRadius: "12px",
-              padding: "24px",
-              boxSizing: "border-box",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center",
-              gap: "10px",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-              height: embedScript ? "380px" : undefined,
-              opacity: phase >= 2 ? 1 : 0,
-              transition: "opacity 0.5s ease-in-out",
-              pointerEvents: phase >= 2 ? "auto" : "none",
-            }}>
-              <p style={{ color: "#1A2B48", fontWeight: 700, fontSize: "1.125rem", lineHeight: 1.4, margin: 0 }}>
-                Get the full picture.
-              </p>
-              <p style={{ color: "#1A2B48CC", fontSize: "0.875rem", lineHeight: 1.6, margin: 0 }}>
-                What this means for you specifically, how you compare to every other type, and the exact next steps for where you are right now.
-              </p>
-              <p style={{ color: "#1A2B48", fontSize: "0.875rem", margin: 0 }}>
-                Free. Sent to your inbox.
-              </p>
-
-              {embedScript ? (
-                // Target div for the beehiiv script — injected via useEffect above.
-                // The script appends its form widget here, scoped to this div only.
-                <div
-                  id="beehiiv-embed-target"
-                  style={{
-                    width: "100%",
-                    marginTop: "8px",
-                  }}
-                />
-              ) : (
-                <button
-                  onClick={scrollToForm}
-                  style={{
-                    marginTop: "4px",
-                    backgroundColor: "#E6C280",
-                    color: "#1A2B48",
-                    fontWeight: 700,
-                    fontSize: "0.875rem",
-                    padding: "12px 24px",
-                    borderRadius: "8px",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  Get my full result
-                </button>
-              )}
-            </div>
-            {/* end gate card */}
-
+            {/* Gradient fade: transparent → #1E3358, masks the text cutoff */}
+            <div style={{
+              position: "absolute",
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: "72px",
+              background: "linear-gradient(to bottom, transparent, #1E3358)",
+              pointerEvents: "none",
+            }} />
           </div>
-          {/* end blur+gate zone */}
+          {/* end dark zone */}
+
+          {/* ── Gate zone: cream, full width, normal flow ── */}
+          <div style={{
+            backgroundColor: "rgba(255,249,240,0.97)",
+            padding: "28px 24px 32px",
+            textAlign: "center",
+            opacity: phase >= 2 ? 1 : 0,
+            transition: "opacity 0.5s ease-in-out",
+            pointerEvents: phase >= 2 ? "auto" : "none",
+          }}>
+            <p style={{ color: "#1A2B48", fontWeight: 700, fontSize: "1.125rem", lineHeight: 1.4, margin: "0 0 10px" }}>
+              Get the full picture.
+            </p>
+            <p style={{ color: "rgba(26,43,72,0.7)", fontSize: "0.875rem", lineHeight: 1.6, margin: "0 0 8px" }}>
+              What this means for you specifically, how you compare to every other type, and the exact next steps for where you are right now.
+            </p>
+            <p style={{ color: "#1A2B48", fontSize: "0.8rem", margin: "0 0 16px" }}>
+              Free. Sent to your inbox.
+            </p>
+
+            {embedScript ? (
+              // beehiiv fills this div naturally — constrained to 420px max on desktop
+              <div
+                id="beehiiv-embed-target"
+                style={{ width: "100%", maxWidth: "420px", margin: "0 auto" }}
+              />
+            ) : (
+              <button
+                onClick={scrollToForm}
+                style={{
+                  backgroundColor: "#E6C280",
+                  color: "#1A2B48",
+                  fontWeight: 700,
+                  fontSize: "0.875rem",
+                  padding: "12px 28px",
+                  borderRadius: "8px",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Get my full result
+              </button>
+            )}
+          </div>
+          {/* end gate zone */}
 
         </div>
         {/* end missing piece box */}
-
-        {/* ── BeeHiiv placeholder (only shown when no embed is configured) ── */}
-        {!embedScript && (
-          <div
-            id="optin-form"
-            className="w-full rounded-xl border-2 border-dashed border-steel/30 bg-navy/40 px-6 py-10 flex items-center justify-center"
-          >
-            <p className="text-steel/50 text-sm font-semibold tracking-widest uppercase text-center">
-              BEEHIIV FORM GOES HERE
-            </p>
-          </div>
-        )}
 
         {/* ── Social share ── */}
         <div className="w-full">

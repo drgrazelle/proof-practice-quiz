@@ -31,7 +31,6 @@ export default function RestarterPage() {
         formId: "a2ec281a-40fd-4cea-ad30-b6ea8e35246c",
       }}
       missingPieceBorderColor="#E6C280"
-      gateCardWidth="78%"
       accentBorder="border-golden"
       accentText="text-golden"
       pillars={PILLARS}

@@ -31,7 +31,6 @@ export default function OptimizerPage() {
         formId: "db75c8f8-5bd9-4701-a1c8-223fa0a8dc94",
       }}
       missingPieceBorderColor="#F9D08B"
-      gateCardWidth="78%"
       accentBorder="border-practice"
       accentText="text-practice"
       pillars={PILLARS}

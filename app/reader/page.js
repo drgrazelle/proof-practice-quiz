@@ -31,7 +31,6 @@ export default function ReaderPage() {
         formId: "0f0ff9c4-ed4b-46f6-99b7-3dbe167164ef",
       }}
       missingPieceBorderColor="#A3D9C9"
-      gateCardWidth="78%"
       accentBorder="border-proof"
       accentText="text-proof"
       pillars={PILLARS}

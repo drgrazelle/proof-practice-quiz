@@ -31,7 +31,6 @@ export default function BelieverPage() {
         formId: "124320b8-2743-4316-a034-b1bc468c0acf",
       }}
       missingPieceBorderColor="#A3D9C9"
-      gateCardWidth="78%"
       accentBorder="border-purpose"
       accentText="text-purpose"
       pillars={PILLARS}

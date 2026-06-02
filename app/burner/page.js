@@ -31,7 +31,6 @@ export default function BurnerPage() {
         formId: "05b7494e-7391-4503-9d12-4bbf38e69b7e",
       }}
       missingPieceBorderColor="#C9BFE3"
-      gateCardWidth="78%"
       accentBorder="border-proof"
       accentText="text-proof"
       pillars={PILLARS}
