@@ -14,69 +14,27 @@ export async function GET() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          padding: "80px",
+          gap: "56px",
           fontFamily: "sans-serif",
+          padding: "80px",
         }}
       >
-        {/* Eyebrow pill */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            border: "1px solid rgba(94,122,158,0.4)",
-            borderRadius: "9999px",
-            padding: "8px 20px",
-            marginBottom: "48px",
-          }}
-        >
-          <div
-            style={{
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              background: "#E6C280",
-            }}
-          />
-          <span
-            style={{
-              color: "#F4F7FA",
-              fontSize: "18px",
-              fontWeight: "600",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              display: "flex",
-            }}
-          >
-            Free self-assessment
-          </span>
-        </div>
-
         {/* Headline */}
         <div
           style={{
             color: "#F4F7FA",
-            fontSize: "58px",
+            fontSize: "80px",
             fontWeight: "800",
-            lineHeight: "1.15",
+            lineHeight: "1.1",
             textAlign: "center",
-            maxWidth: "900px",
-            marginBottom: "32px",
             display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
           }}
         >
-          <span style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "14px" }}>
-            <span style={{ color: "#F4F7FA" }}>There are</span>
-            <span style={{ color: "#E6C280" }}>7 types of people</span>
-            <span style={{ color: "#F4F7FA" }}>who struggle to</span>
-            <span style={{ color: "#F4F7FA" }}>make health habits stick.</span>
-          </span>
-          <span style={{ color: "#E6C280", marginTop: "28px", display: "flex" }}>
-            Which one are you?
-          </span>
+          <span style={{ color: "#F4F7FA" }}>Why you keep</span>
+          <span style={{ color: "#E6C280" }}>starting over</span>
         </div>
 
         {/* CTA button */}
@@ -84,15 +42,14 @@ export async function GET() {
           style={{
             background: "#E6C280",
             color: "#1A2B48",
-            fontSize: "22px",
+            fontSize: "26px",
             fontWeight: "700",
-            padding: "20px 48px",
+            padding: "22px 56px",
             borderRadius: "10px",
-            marginTop: "16px",
             display: "flex",
           }}
         >
-          Take the quiz
+          Take the free quiz
         </div>
       </div>
     ),
