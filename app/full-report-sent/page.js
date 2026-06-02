@@ -65,7 +65,7 @@ export default function FullReportSentPage() {
         </div>
 
         {/* Spam note */}
-        <p className="text-slate/40 text-xs text-center">
+        <p className="text-slate/70 text-xs text-center">
           Don&apos;t see it? Check your spam folder and move it to your inbox.
         </p>
 
@@ -73,7 +73,7 @@ export default function FullReportSentPage() {
 
       {/* ── Footer ── */}
       <footer className="border-t border-steel/20 px-6 py-5 mt-8">
-        <p className="text-slate/40 text-xs text-center">
+        <p className="text-slate/70 text-xs text-center">
           &copy; 2026 Dr. Grazelle &mdash; Proof &amp; Practice. Not medical advice.
         </p>
       </footer>
