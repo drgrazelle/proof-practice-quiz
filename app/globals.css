@@ -19,28 +19,20 @@ body {
 }
 
 /*
-  Beehiiv injects: #beehiiv-embed-target > div > iframe
-  The wrapper div has no styles. The iframe gets width set via postMessage
-  from the form content (its natural width in fluid mode).
+  Beehiiv's _renderInline inserts:
+    #beehiiv-embed-target
+      > <script>
+      > <div style="width:100%;max-width:100%;margin:0 auto">  ← beehiiv wrap
+            > <div>                                            ← iframeWrap
+                  > <iframe style="width:100%">
 
-  DO NOT override iframe width with 100% — that forces the iframe wider
-  than its natural size and makes the form content appear left-aligned
-  inside a too-wide iframe (cross-origin, can't fix from outside).
-
-  Instead: make the wrapper a flex container that centers the iframe at
-  whatever natural width beehiiv gives it. max-width: 100% prevents
-  overflow on narrow screens.
+  The iframe is always 100% wide for inline embeds (hardcoded by beehiiv).
+  Centering is handled by beehiiv's own container_horizontal_alignment setting.
+  Do NOT force display:flex on the wrap div — it fights beehiiv's margin:0 auto.
+  Only enforce max-width:100% on the iframe to prevent overflow on narrow screens.
 */
 
-/* Wrapper div beehiiv inserts — center the iframe as a flex child */
-#beehiiv-embed-target > div {
-  display: flex !important;
-  justify-content: center !important;
-  width: 100% !important;
-}
-
-/* Let beehiiv control iframe width; just prevent overflow and center it */
-#beehiiv-embed-target > div > iframe {
+#beehiiv-embed-target > div > div > iframe {
   max-width: 100% !important;
 }
 

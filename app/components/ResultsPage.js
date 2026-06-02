@@ -244,13 +244,8 @@ export default function ResultsPage({
                 <div
                   id="beehiiv-embed-target"
                   style={{
-                    display: "flex",
-                    justifyContent: "center",
                     width: "100%",
-                    maxWidth: "100% !important",
-                    boxSizing: "border-box !important",
                     marginTop: "8px",
-                    padding: "4px 0",
                   }}
                 />
               ) : (
