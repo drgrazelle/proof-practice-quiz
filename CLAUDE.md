@@ -6,9 +6,9 @@ This file orients a new session. Read it before making any changes.
 
 ## What This Is
 
-A Next.js 14 quiz app for Dr. Grazelle Sanchez's brand **Proof & Practice**. Users take a 12-question self-assessment, receive a scored archetype result, and are directed to sign up for Dr. Grazelle's newsletter via a beehiiv embed.
+A Next.js 14 quiz app for Dr. Grazelle Sanchez's brand **Proof & Practice**. Users take a 12-question self-assessment, receive a scored archetype result, and are prompted to sign up for Dr. Grazelle's newsletter via a beehiiv embed.
 
-The quiz is built entirely in Next.js — no Tally, no third-party form builders for the quiz itself.
+The quiz is built entirely in Next.js — no Tally, no third-party form builders.
 
 ---
 
@@ -29,7 +29,7 @@ The quiz is built entirely in Next.js — no Tally, no third-party form builders
 proof-practice-quiz/
 ├── app/
 │   ├── layout.js                  # Root layout — Inter font, metadata
-│   ├── globals.css                # Tailwind directives, CSS vars
+│   ├── globals.css                # Tailwind directives + beehiiv iframe overflow fix
 │   ├── page.js                    # Landing page at /
 │   ├── quiz/
 │   │   └── page.js                # Quiz page at /quiz (client component)
@@ -69,7 +69,7 @@ All colors are registered in `tailwind.config.js` and usable as Tailwind classes
 | Token | Hex | Usage |
 |---|---|---|
 | `golden` | `#E6C280` | Primary CTAs, highlights |
-| `green` | `#76C043` | Wellness icons |
+| `green` | `#76C043` | Wellness icons, High pillar dot |
 
 ### Category / Pillar Colors
 | Token | Hex | Pillar |
@@ -78,10 +78,13 @@ All colors are registered in `tailwind.config.js` and usable as Tailwind classes
 | `practice` | `#A3D9C9` | Practice pillar |
 | `purpose` | `#C9BFE3` | Purpose pillar |
 
-### Additional values used in inline styles (not in Tailwind config)
+### Additional inline style values
 - Low pillar card background: `#2A3A52`
 - Low pillar text: `#9EACC0`
-- Gate card background: `rgba(255,249,240,0.92)` (frosted cream)
+- Missing piece box background: `#1E3358`
+- Gate section background: `rgba(255,249,240,0.97)` (cream)
+- High pillar status dot: `#76C043` (green)
+- Low pillar status dot: `#E05252` (red)
 
 ---
 
@@ -90,18 +93,17 @@ All colors are registered in `tailwind.config.js` and usable as Tailwind classes
 ### `/` — Landing Page
 - Dark navy full-screen layout
 - Headline: "There are 7 types of people who struggle to make health habits stick. / Which one are you?"
-- Subline: "12 questions. 3 minutes. Find out which piece you're missing."
-- Golden CTA button linking to `/quiz`
+- Subline wraps on mobile (no `whitespace-nowrap`) — `text-center max-w-sm mx-auto`
+- Golden CTA button → `/quiz`
 - Three-pillar strip (Proof / Practice / Purpose) with brand colors
 
 ### `/quiz` — Quiz Page
 - Client component (`"use client"`)
 - Shows one question at a time (12 total across 3 pillars)
-- Answer order is **randomized on mount** (shuffled in `useEffect` to avoid SSR hydration mismatch — this was a key bug fix)
+- Answer order **randomized on mount** via `useEffect` (SSR hydration fix)
 - Tracks scores for `proof`, `practice`, `purpose` separately
 - Progress bar + "Question X of 12" counter
-- After Q12, scores are evaluated: 0–5 = pillar absent, 6–12 = pillar present
-- Router pushes to the correct archetype route
+- After Q12: 0–5 = pillar absent, 6–12 = pillar present → router pushes to archetype route
 
 ### `/[archetype]` — 8 Results Pages
 All use the shared `ResultsPage` component in `app/components/ResultsPage.js`.
@@ -110,36 +112,34 @@ All use the shared `ResultsPage` component in `app/components/ResultsPage.js`.
 
 ## The 8 Archetypes
 
-Determined by which pillars score High (6–12) or Low (0–5):
-
-| Route | Name | Proof | Practice | Purpose |
-|---|---|---|---|---|
-| `/restarter` | The Restarter | Low | Low | Low |
-| `/reader` | The Reader | High | Low | Low |
-| `/optimizer` | The Optimizer | Low | High | Low |
-| `/seeker` | The Seeker | Low | Low | High |
-| `/burner` | The Burner | High | High | Low |
-| `/believer` | The Believer | High | Low | High |
-| `/devoted` | The Devoted | Low | High | High |
-| `/practitioner` | The Practitioner | High | High | High |
+| Route | Name | Proof | Practice | Purpose | Border Color |
+|---|---|---|---|---|---|
+| `/restarter` | The Restarter | Low | Low | Low | `#E6C280` golden |
+| `/reader` | The Reader | High | Low | Low | `#A3D9C9` teal |
+| `/optimizer` | The Optimizer | Low | High | Low | `#F9D08B` gold |
+| `/seeker` | The Seeker | Low | Low | High | `#C9BFE3` lavender |
+| `/burner` | The Burner | High | High | Low | `#C9BFE3` lavender |
+| `/believer` | The Believer | High | Low | High | `#A3D9C9` teal |
+| `/devoted` | The Devoted | Low | High | High | `#F9D08B` gold |
+| `/practitioner` | The Practitioner | High | High | High | `#E6C280` golden |
 
 ---
 
-## ResultsPage Component — Props
+## ResultsPage Component — Current Props
 
 ```js
 ResultsPage({
-  archetypeName,      // e.g. "The Restarter"
-  oneLineTruth,       // subheadline / gut-punch sentence
-  strengthSentence,   // what the user has already built
-  whatYouNeed,        // full "what you need" paragraph — first sentence shown above blur zone
-  blurContent,        // dense wall of text shown blurred behind gate card (what you need
-                      // + 3 descriptive paragraphs + bullets as prose)
-  accentBorder,       // Tailwind class e.g. "border-golden"
-  accentText,         // Tailwind class e.g. "text-golden"
-  gateCardWidth,      // default "82%" — use "92%" for pages with embedded forms
-  embedScript,        // optional { src, formId } — replaces scroll button with beehiiv Script
-  pillars,            // array of 3 pillar objects (see below)
+  archetypeName,           // e.g. "The Restarter"
+  oneLineTruth,            // subheadline / gut-punch sentence
+  strengthSentence,        // what the user has already built
+  whatYouNeed,             // full "what you need" paragraph (passed but not rendered directly —
+                           // blurContent already includes this text)
+  blurContent,             // ~300-word block shown blurred above the gate band
+  missingPieceBorderColor, // hex — used for box outline AND label color, per archetype
+  embedScript,             // { src, formId } — injects beehiiv into #beehiiv-embed-target
+  accentBorder,            // Tailwind class e.g. "border-golden"
+  accentText,              // Tailwind class e.g. "text-golden"
+  pillars,                 // array of 3 pillar objects (see below)
 })
 ```
 
@@ -148,58 +148,108 @@ Each pillar object:
 { label, status: "present"|"absent", colorClass, dotClass, borderClass, highBg }
 ```
 
----
-
-## Missing Piece Box — How It Works
-
-The most complex UI element. Structure:
-
-1. **Label** ("YOUR MISSING PIECE") + **first sentence** of `whatYouNeed` — always fully readable above the blur zone
-2. **Blur zone** (`position: relative`, `overflow: hidden`):
-   - `blurContent` text is `position: absolute; inset: 0` — fills the background
-   - Gate card is in **normal flow** — its height sizes the container (no fixed minHeight)
-   - Container has `padding: "36px 20px 20px"` — creates visible blurred text above (36px) and on sides (20px)
-   - Gate card is `width: gateCardWidth` with `margin: auto` — text peeks on left/right
-3. **Animation sequence** (JS `setTimeout`, not pure CSS):
-   - 0ms: text fully visible (blur = 0), gate card opacity = 0
-   - 500ms: blur transitions in over 0.5s (`filter: blur(8px)`)
-   - 1000ms: gate card fades in over 0.5s (`opacity: 1`)
-   - `pointerEvents` on gate card is `"none"` until phase 2
+**Note:** `gateCardWidth` prop has been removed. `whatYouNeed` is still passed but only used
+as a prop — the blurContent already contains this paragraph for the blur zone.
 
 ---
 
-## Gate Card
+## Missing Piece Section — Current Design (Fade-to-Gate)
 
-- Background: `rgba(255,249,240,0.92)` with `backdropFilter: blur(2px)` (frosted cream)
-- Text: dark navy `#1A2B48`
-- Headline: "Get the full picture."
-- Body: "What this means for you specifically, how you compare to every other type, and the exact next steps for where you are right now."
-- Subtext: "Free. Sent to your inbox." — full `#1A2B48` (not transparent)
-- Default: golden scroll button → scrolls to `#optin-form`
-- Practitioner only: beehiiv `<Script>` embed instead of button
+Replaced the old floating gate card overlay with a **full-page fade-to-gate** pattern:
+
+1. **Text zone** (on page background, no box border):
+   - "YOUR MISSING PIECE" label in `missingPieceBorderColor`
+   - `blurContent` text, `maxHeight: 160px`, `overflow: hidden`
+   - Blur animates in at phase 1 (`filter: blur(5px)`)
+   - Gradient overlay fades text into page navy (`transparent → #1A2B48`)
+
+2. **Gate band** (cream `rgba(255,249,240,0.97)`, breaks out of column padding):
+   - `marginLeft: "-24px"`, `marginRight: "-24px"` — runs edge-to-edge
+   - "Get the full picture." headline + body + "Free. Sent to your inbox."
+   - beehiiv embed in `#beehiiv-embed-target` — `width: 100%`, `maxWidth: 440px`, `margin: 0 auto`
+   - Fades in at phase 2 (`opacity: 1`)
+
+**Animation sequence** (unchanged from original):
+- 0ms: text visible, gate band hidden
+- 500ms: text blurs over 0.5s
+- 1000ms: gate band fades in over 0.5s
 
 ---
 
-## Beehiiv Integration
+## Beehiiv Integration — COMPLETE on all 8 pages
 
-- **`/practitioner`** has a live beehiiv embed in the gate card:
-  - Script src: `https://subscribe-forms.beehiiv.com/v3/loader.js`
-  - Form ID: `8e85d083-290c-4830-8afb-689687badf01`
-  - Loaded via `next/script` with `strategy="afterInteractive"`
-- All other 7 pages have a `BEEHIIV FORM GOES HERE` dashed placeholder div at `id="optin-form"` — ready to drop in the embed when ready
+All 8 archetype pages use `embedScript` prop with unique form IDs:
+
+| Route | Form ID |
+|---|---|
+| `/restarter` | `a2ec281a-40fd-4cea-ad30-b6ea8e35246c` |
+| `/reader` | `0f0ff9c4-ed4b-46f6-99b7-3dbe167164ef` |
+| `/optimizer` | `db75c8f8-5bd9-4701-a1c8-223fa0a8dc94` |
+| `/seeker` | `b5e8aacd-c5c4-4102-a5dd-c7922e58faaf` |
+| `/burner` | `05b7494e-7391-4503-9d12-4bbf38e69b7e` |
+| `/believer` | `124320b8-2743-4316-a034-b1bc468c0acf` |
+| `/devoted` | `d854fc1d-f157-4716-96e1-e88f162a24b7` |
+| `/practitioner` | `8e85d083-290c-4830-8afb-689687badf01` |
+
+**Beehiiv script:** `https://subscribe-forms.beehiiv.com/v3/loader.js`
+Injected dynamically via `useEffect` when phase reaches 2 (gate band visible).
+
+**Required beehiiv form settings (set on all 8 forms):**
+- Form width: **Fluid** (Fill)
+- Direction: **Vertical** (stacked — email above, button below)
+- Horizontal alignment: **Center**
+- Padding: 0
+
+**How beehiiv's inline embed works (important for debugging):**
+- `_renderInline` always passes `{ collapsed: true }` → iframe always gets `width: 100%`
+- The Fixed/Fluid width setting does NOT affect iframe width for inline embeds
+- Centering is handled by beehiiv's `container_horizontal_alignment` setting internally
+- Do NOT add `width: 100% !important` to the iframe in CSS — it fights beehiiv's own centering
+- Our CSS in `globals.css` only adds `max-width: 100% !important` on the deep iframe selector
+
+**DOM structure beehiiv injects:**
+```
+#beehiiv-embed-target
+  > <script data-beehiiv-form="...">
+  > <div style="width:100%;max-width:100%;margin:0 auto">   ← wrap
+      > <div>                                               ← iframeWrap
+          > <iframe style="width:100%">
+```
 
 ---
 
-## Key Decisions Made This Session
+## globals.css — What's In It
 
-1. **No TypeScript, no Tally** — JavaScript only, everything built in Next.js
-2. **Answer randomization fix** — Shuffling quiz answers in `useState()` initializer caused SSR hydration mismatch and broke clicks. Fixed by deferring shuffle to `useEffect` with a `ready` state gate.
-3. **Blur zone layout inversion** — Gate card in normal flow (sizes the container); blurred text is `position: absolute` filling the background. This was the key fix after multiple failed attempts with `minHeight` and `absolute` card placement.
-4. **`overflow: hidden` on outer wrapper was clipping the gate card** — Removed it from the outer missing piece box; `overflow: hidden` is only on the inner blur zone div.
-5. **`blurContent` is separate from `whatYouNeed`** — `whatYouNeed` is the actual paragraph used for the visible first sentence. `blurContent` is a dense ~300-word wall combining the what-you-need paragraph + 3 descriptive paragraphs + bullets as prose, specific to each archetype.
-6. **Stale `.next` cache** causes server errors after rebuilds — always `rm -rf .next` and restart the dev server after structural changes.
-7. **Dev server runs on port 3000** — `npm run dev -- --port 3000`
-8. **GitHub CLI path** — `gh` is installed at `/opt/homebrew/bin/gh`, not on the default shell PATH used by Claude's Bash tool. Use the full path if needed.
+```css
+/* Only rule beyond Tailwind base + utilities: */
+#beehiiv-embed-target > div > div > iframe {
+  max-width: 100% !important;   /* prevents overflow on narrow screens */
+}
+```
+
+---
+
+## Pillar Score Strip
+
+Three cards across the top of each results page. Status dot colors:
+- **High pillar:** green dot `#76C043`, card background = pillar color (proof/practice/purpose)
+- **Low pillar:** red dot `#E05252`, card background = `#2A3A52`
+
+---
+
+## Key Technical Decisions (cumulative)
+
+1. **No TypeScript, no Tally** — JavaScript only, everything in Next.js
+2. **Answer randomization** — shuffled in `useEffect` with `ready` state gate (SSR hydration fix)
+3. **Fade-to-gate replaces gate card** — after many iterations with floating overlay cards causing
+   height/centering issues with beehiiv's cross-origin iframe, switched to content-fade pattern
+   where gate band is in normal document flow, full width
+4. **beehiiv always uses `width:100%` for inline embeds** — hardcoded in their loader script;
+   Fixed/Fluid setting only affects overlays. Centering must come from their alignment setting.
+5. **Share section removed** — users have one choice: enter email or leave
+6. **Stale `.next` cache** — always `rm -rf .next` and restart after structural changes
+7. **Dev server:** `npm run dev -- --port 3000`
+8. **GitHub CLI:** `gh` is at `/opt/homebrew/bin/gh`
 
 ---
 
@@ -213,9 +263,58 @@ The most complex UI element. Structure:
 
 ---
 
+## What's Done ✅
+
+- Landing page (`/`) — complete, mobile-responsive
+- Quiz page (`/quiz`) — complete, all 12 questions, randomized answers, correct routing
+- All 8 results pages — complete with archetype content
+- beehiiv embeds live on all 8 pages with unique form IDs
+- Fade-to-gate design on all 8 results pages
+- Traffic light pillar dots (green/red)
+- Mobile-responsive layout verified on 428px
+
 ## What Still Needs To Be Done
 
-- Replace `BEEHIIV FORM GOES HERE` placeholders on the 7 non-practitioner results pages with live beehiiv embeds
-- Deploy to production (Vercel recommended for Next.js)
-- Add quiz title (currently `[Title placeholder]` in the questions file)
-- Consider adding OG meta tags per results page for social sharing
+1. **Deploy to Vercel** — not yet deployed, runs locally only
+   - Recommended: connect GitHub repo to Vercel, set root directory to `/`, framework preset Next.js
+   - No env vars needed (no secrets in this project)
+
+2. **Update all 8 beehiiv forms** to Fluid width + center alignment + vertical direction
+   - Only `/devoted` has been confirmed working; other 7 need the same settings applied in beehiiv dashboard
+
+3. **OG meta tags** — add per-page Open Graph tags for social sharing (title, description, image per archetype)
+   - Add `export const metadata` in each archetype `page.js` with `openGraph` fields
+   - Would need a 1200×630 OG image per archetype (or one generic one)
+
+4. **Quiz title** — still `[Title placeholder]` in `3p-quiz-questions-final.md`
+
+---
+
+## Exact Next Task for New Session
+
+**Priority 1 — Deploy to Vercel:**
+```
+1. Go to vercel.com → New Project → Import from GitHub → drgrazelle/proof-practice-quiz
+2. Framework: Next.js (auto-detected)
+3. No env vars needed
+4. Deploy
+5. Test all 8 result pages on the live URL
+6. Test mobile on the live URL
+```
+
+**Priority 2 — OG meta tags (after deploy, so you have the live URL):**
+Each `page.js` already exports `metadata` with just a `title`. Extend it:
+```js
+export const metadata = {
+  title: "The Devoted | Proof & Practice",
+  description: "You show up with your whole heart. You deserve a better foundation.",
+  openGraph: {
+    title: "The Devoted | Proof & Practice",
+    description: "You show up with your whole heart. You deserve a better foundation.",
+    url: "https://[live-url]/devoted",
+    siteName: "Proof & Practice",
+    type: "website",
+  },
+};
+```
+The `description` for each archetype = the `oneLineTruth` prop in that page's `page.js`.
