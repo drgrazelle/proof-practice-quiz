@@ -7,7 +7,7 @@ export default function Home() {
       {/* ── Top bar ── */}
       <header className="px-6 py-5 flex items-center justify-between max-w-5xl mx-auto w-full">
         <span className="text-slate text-sm font-semibold tracking-widest uppercase">
-          Proof &amp; Practice
+          Health Habit Consistency Quiz
         </span>
         <span className="text-slate text-xs tracking-wide hidden sm:block">
           Grazelle S.

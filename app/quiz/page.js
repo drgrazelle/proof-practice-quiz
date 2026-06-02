@@ -242,7 +242,7 @@ export default function QuizPage() {
       {/* ── Top bar ── */}
       <header className="px-6 py-5 flex items-center justify-between max-w-2xl mx-auto w-full">
         <span className="text-slate text-sm font-semibold tracking-widest uppercase">
-          Proof &amp; Practice
+          Health Habit Consistency Quiz
         </span>
         <span className="text-slate/60 text-xs">
           Question {current + 1} of {total}

@@ -64,7 +64,7 @@ export default function ResultsPage({
       {/* ── Top bar ── */}
       <header className="px-6 py-5 flex items-center justify-between max-w-2xl mx-auto w-full">
         <Link href="/" className="text-slate text-sm font-semibold tracking-widest uppercase hover:text-golden transition-colors">
-          Proof &amp; Practice
+          Health Habit Consistency Quiz
         </Link>
         <Link href="/" className="text-slate/60 text-xs hover:text-slate transition-colors">
           Retake the quiz
