@@ -1,6 +1,22 @@
 import ResultsPage from "../components/ResultsPage";
 
-export const metadata = { title: "The Reader | Proof & Practice" };
+export const metadata = {
+  title: "The Reader | Proof & Practice",
+  description: "You know more than most. You're living less than you could.",
+  openGraph: {
+    title: "The Reader | Proof & Practice",
+    description: "You know more than most. You're living less than you could.",
+    siteName: "Proof & Practice",
+    type: "website",
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "The Reader | Proof & Practice" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Reader | Proof & Practice",
+    description: "You know more than most. You're living less than you could.",
+    images: ["/api/og"],
+  },
+};
 
 const PILLARS = [
   { label: "Proof",    status: "present", colorClass: "text-proof",    dotClass: "bg-proof",    borderClass: "border-proof/40",    highBg: "bg-proof" },

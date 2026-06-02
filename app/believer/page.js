@@ -1,6 +1,22 @@
 import ResultsPage from "../components/ResultsPage";
 
-export const metadata = { title: "The Believer | Proof & Practice" };
+export const metadata = {
+  title: "The Believer | Proof & Practice",
+  description: "You know it and you feel it. You just can't make it survive real life.",
+  openGraph: {
+    title: "The Believer | Proof & Practice",
+    description: "You know it and you feel it. You just can't make it survive real life.",
+    siteName: "Proof & Practice",
+    type: "website",
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "The Believer | Proof & Practice" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Believer | Proof & Practice",
+    description: "You know it and you feel it. You just can't make it survive real life.",
+    images: ["/api/og"],
+  },
+};
 
 const PILLARS = [
   { label: "Proof",    status: "present", colorClass: "text-proof",    dotClass: "bg-proof",    borderClass: "border-proof/40",    highBg: "bg-proof" },

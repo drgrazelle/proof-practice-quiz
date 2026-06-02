@@ -1,6 +1,22 @@
 import ResultsPage from "../components/ResultsPage";
 
-export const metadata = { title: "The Practitioner | Proof & Practice" };
+export const metadata = {
+  title: "The Practitioner | Proof & Practice",
+  description: "You've built what most people spend years searching for.",
+  openGraph: {
+    title: "The Practitioner | Proof & Practice",
+    description: "You've built what most people spend years searching for.",
+    siteName: "Proof & Practice",
+    type: "website",
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "The Practitioner | Proof & Practice" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Practitioner | Proof & Practice",
+    description: "You've built what most people spend years searching for.",
+    images: ["/api/og"],
+  },
+};
 
 const PILLARS = [
   { label: "Proof",    status: "present", colorClass: "text-proof",    dotClass: "bg-proof",    borderClass: "border-proof/40",    highBg: "bg-proof" },

@@ -1,6 +1,22 @@
 import ResultsPage from "../components/ResultsPage";
 
-export const metadata = { title: "The Devoted | Proof & Practice" };
+export const metadata = {
+  title: "The Devoted | Proof & Practice",
+  description: "You show up with your whole heart. You deserve a better foundation.",
+  openGraph: {
+    title: "The Devoted | Proof & Practice",
+    description: "You show up with your whole heart. You deserve a better foundation.",
+    siteName: "Proof & Practice",
+    type: "website",
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "The Devoted | Proof & Practice" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Devoted | Proof & Practice",
+    description: "You show up with your whole heart. You deserve a better foundation.",
+    images: ["/api/og"],
+  },
+};
 
 const PILLARS = [
   { label: "Proof",    status: "absent",  colorClass: "text-proof",    dotClass: "bg-proof",    borderClass: "border-proof/40",    highBg: "bg-proof" },

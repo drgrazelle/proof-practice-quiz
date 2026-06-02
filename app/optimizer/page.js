@@ -1,6 +1,22 @@
 import ResultsPage from "../components/ResultsPage";
 
-export const metadata = { title: "The Optimizer | Proof & Practice" };
+export const metadata = {
+  title: "The Optimizer | Proof & Practice",
+  description: "You've built the routine. You just built it on the wrong foundation.",
+  openGraph: {
+    title: "The Optimizer | Proof & Practice",
+    description: "You've built the routine. You just built it on the wrong foundation.",
+    siteName: "Proof & Practice",
+    type: "website",
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "The Optimizer | Proof & Practice" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Optimizer | Proof & Practice",
+    description: "You've built the routine. You just built it on the wrong foundation.",
+    images: ["/api/og"],
+  },
+};
 
 const PILLARS = [
   { label: "Proof",    status: "absent",  colorClass: "text-proof",    dotClass: "bg-proof",    borderClass: "border-proof/40",    highBg: "bg-proof" },
