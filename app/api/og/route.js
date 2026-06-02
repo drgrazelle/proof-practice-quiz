@@ -22,15 +22,18 @@ export async function GET() {
         {/* Headline */}
         <div
           style={{
-            color: "#F4F7FA",
             fontSize: "80px",
             fontWeight: "800",
             lineHeight: "1.1",
             textAlign: "center",
             display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
           }}
         >
-          Here&apos;s why you keep starting over.
+          <span style={{ color: "#F4F7FA" }}>Here&apos;s why you keep</span>
+          <span style={{ color: "#E6C280" }}>starting over.</span>
         </div>
 
         {/* CTA button */}
