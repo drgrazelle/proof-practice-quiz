@@ -229,12 +229,12 @@ export default function ArchetypeMapPage() {
 
             {/* THE BURNER — Proof + Practice, upper-left
                 Verified: Proof dist≈62 ✓  Practice dist≈82 ✓  Purpose dist≈144 > 120 ✓ */}
-            <text x="136" y="168" textAnchor="middle"
+            <text x="128" y="168" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
               The Burner
             </text>
-            <text x="136" y="181" textAnchor="middle"
+            <text x="128" y="181" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Proof + Practice
@@ -242,12 +242,12 @@ export default function ArchetypeMapPage() {
 
             {/* THE BELIEVER — Proof + Purpose, upper-right
                 Verified: Proof dist≈62 ✓  Purpose dist≈82 ✓  Practice dist≈144 > 120 ✓ */}
-            <text x="264" y="168" textAnchor="middle"
+            <text x="272" y="168" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
               The Believer
             </text>
-            <text x="264" y="181" textAnchor="middle"
+            <text x="272" y="181" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Proof + Purpose
