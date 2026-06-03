@@ -27,8 +27,49 @@ export default function EmailGatePage({ embedScript }) {
   return (
     <main className="min-h-screen bg-navy flex flex-col">
 
-      {/* ── Progress complete bar (Option D) ── */}
-      <div className="w-full h-1" style={{ background: "#E6C280" }} />
+      <style>{`
+        @keyframes drawBar {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .draw-bar {
+          animation: drawBar 550ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .fade-up-1 {
+          opacity: 0;
+          animation: fadeUp 400ms ease forwards;
+          animation-delay: 500ms;
+        }
+        .fade-up-2 {
+          opacity: 0;
+          animation: fadeUp 400ms ease forwards;
+          animation-delay: 650ms;
+        }
+        .fade-up-3 {
+          opacity: 0;
+          animation: fadeUp 400ms ease forwards;
+          animation-delay: 800ms;
+        }
+        .fade-up-4 {
+          opacity: 0;
+          animation: fadeUp 400ms ease forwards;
+          animation-delay: 950ms;
+        }
+        .fade-up-5 {
+          opacity: 0;
+          animation: fadeUp 400ms ease forwards;
+          animation-delay: 1050ms;
+        }
+      `}</style>
+
+      {/* ── Progress complete bar — draws across on load ── */}
+      <div className="w-full h-1 bg-navy overflow-hidden">
+        <div className="h-full draw-bar" style={{ background: "#E6C280" }} />
+      </div>
 
       {/* ── Header ── */}
       <header className="px-6 py-5 flex items-center justify-between max-w-2xl mx-auto w-full">
@@ -47,9 +88,9 @@ export default function EmailGatePage({ embedScript }) {
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <div className="w-full max-w-[480px] flex flex-col gap-6">
 
-          {/* Option B — "Pattern identified" badge + heading */}
           <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2">
+            {/* Badge */}
+            <div className="flex items-center gap-2 fade-up-1">
               <span
                 className="w-2 h-2 rounded-full shrink-0"
                 style={{ background: "#E6C280" }}
@@ -62,20 +103,23 @@ export default function EmailGatePage({ embedScript }) {
               </span>
             </div>
 
-            <h1 className="text-slate font-extrabold text-3xl sm:text-4xl leading-tight tracking-tight">
+            {/* Headline */}
+            <h1 className="text-slate font-extrabold text-3xl sm:text-4xl leading-tight tracking-tight fade-up-2">
               We found your pattern.
             </h1>
-            <p className="text-slate/60 text-base leading-relaxed">
+
+            {/* Subtext */}
+            <p className="text-slate/60 text-base leading-relaxed fade-up-3">
               Where should we send your result? Your habit consistency profile,
               what&apos;s been getting in the way, and your specific next step.
             </p>
           </div>
 
           {/* Beehiiv embed */}
-          <div id="beehiiv-embed-target" className="w-full" />
+          <div id="beehiiv-embed-target" className="w-full fade-up-4" />
 
           {/* Disclaimer */}
-          <p className="text-slate/35 text-xs leading-relaxed">
+          <p className="text-slate/35 text-xs leading-relaxed fade-up-5">
             You&apos;ll also get Proof &amp; Practice, a weekly newsletter on
             evidence-based health for people too busy for perfection.
             Unsubscribe anytime.
