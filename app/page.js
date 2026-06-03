@@ -83,7 +83,7 @@ export default function Home() {
         <Link
           href="/quiz"
           className="inline-block font-bold text-base sm:text-lg px-8 py-4 rounded-lg shadow-md hover:brightness-105 active:scale-95 transition-all duration-150"
-          style={{ backgroundColor: "#1A2B4A", color: "#F9F8F5" }}
+          style={{ backgroundColor: "#E6C280", color: "#1A2B4A", border: "2px solid #1A2B4A" }}
         >
           Take the quiz →
         </Link>
