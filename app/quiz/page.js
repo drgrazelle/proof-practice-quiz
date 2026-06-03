@@ -213,6 +213,8 @@ export default function QuizPage() {
   // History stack: each entry is { optionIndex, pointsAdded, pillar }
   // Lets us undo a selection when going back.
   const [history, setHistory] = useState([]);
+  // True only when user just pressed Back — gates the previous-answer highlight
+  const [navigatedBack, setNavigatedBack] = useState(false);
 
   // Use a ref so the timeout callback always sees fresh state
   const stateRef = useRef({ current, scores, questions, history });
@@ -239,6 +241,7 @@ export default function QuizPage() {
         router.push(ARCHETYPE_SLUGS[getArchetype(newScores)]);
       } else {
         setHistory([...hist, { optionIndex, pointsAdded: pts, pillar: q.pillar }]);
+        setNavigatedBack(false);
         setScores(newScores);
         setCurrent(cur + 1);
         setSelected(null);
@@ -255,6 +258,7 @@ export default function QuizPage() {
       [prev.pillar]: sc[prev.pillar] - prev.pointsAdded,
     }));
     setHistory((h) => h.slice(0, -1));
+    setNavigatedBack(true);
     setCurrent((c) => c - 1);
     // Pre-select the answer they previously chose
     setSelected(prev.optionIndex);
@@ -326,7 +330,7 @@ export default function QuizPage() {
             {question.options.map((option, i) => {
               // Highlight the answer they previously chose when returning to a question
               const prevAnswer = history[current - 1];
-              const wasPreviousAnswer = prevAnswer && prevAnswer.optionIndex === i;
+              const wasPreviousAnswer = navigatedBack && prevAnswer && prevAnswer.optionIndex === i;
               const isSelected = selected === i;
 
               return (
