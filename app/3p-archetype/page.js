@@ -105,34 +105,34 @@ export default function ArchetypeMapPage() {
 
             {/* PRACTICE — lower-left region inside Practice circle
                 Verified: inside Practice(140,252,r120) ✓  outside Proof ✓  outside Purpose ✓ */}
-            <text x="82" y="300" textAnchor="middle"
+            <text x="82" y="284" textAnchor="middle"
               fill={PRACTICE_COLOR} fontWeight="700" fontSize="13"
               fontFamily={FONT} letterSpacing="2">
               PRACTICE
             </text>
-            <text x="82" y="315" textAnchor="middle"
+            <text x="82" y="299" textAnchor="middle"
               fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               A system that
             </text>
-            <text x="82" y="330" textAnchor="middle"
+            <text x="82" y="314" textAnchor="middle"
               fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               survives real life
             </text>
 
             {/* PURPOSE — lower-right region inside Purpose circle */}
-            <text x="318" y="300" textAnchor="middle"
+            <text x="318" y="284" textAnchor="middle"
               fill={PURPOSE_COLOR} fontWeight="700" fontSize="13"
               fontFamily={FONT} letterSpacing="2">
               PURPOSE
             </text>
-            <text x="318" y="315" textAnchor="middle"
+            <text x="318" y="299" textAnchor="middle"
               fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               A reason that
             </text>
-            <text x="318" y="330" textAnchor="middle"
+            <text x="318" y="314" textAnchor="middle"
               fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               {"doesn't expire"}
@@ -201,12 +201,12 @@ export default function ArchetypeMapPage() {
 
             {/* THE OPTIMIZER — Practice only
                 Verified: inside Practice(140,252,r120) ✓  outside Proof ✓  outside Purpose ✓ */}
-            <text x="82" y="308" textAnchor="middle"
+            <text x="82" y="294" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11.5"
               fontFamily={FONT}>
               The Optimizer
             </text>
-            <text x="82" y="322" textAnchor="middle"
+            <text x="82" y="308" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
               fontFamily={FONT}>
               Has Practice only
@@ -214,12 +214,12 @@ export default function ArchetypeMapPage() {
 
             {/* THE SEEKER — Purpose only
                 Verified: inside Purpose(260,252,r120) ✓  outside Proof ✓  outside Practice ✓ */}
-            <text x="318" y="308" textAnchor="middle"
+            <text x="318" y="294" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11.5"
               fontFamily={FONT}>
               The Seeker
             </text>
-            <text x="318" y="322" textAnchor="middle"
+            <text x="318" y="308" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
               fontFamily={FONT}>
               Has Purpose only
@@ -229,12 +229,12 @@ export default function ArchetypeMapPage() {
 
             {/* THE BURNER — Proof + Practice, upper-left
                 Verified: Proof dist≈62 ✓  Practice dist≈82 ✓  Purpose dist≈144 > 120 ✓ */}
-            <text x="145" y="168" textAnchor="middle"
+            <text x="136" y="168" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
               The Burner
             </text>
-            <text x="145" y="181" textAnchor="middle"
+            <text x="136" y="181" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Proof + Practice
@@ -242,12 +242,12 @@ export default function ArchetypeMapPage() {
 
             {/* THE BELIEVER — Proof + Purpose, upper-right
                 Verified: Proof dist≈62 ✓  Purpose dist≈82 ✓  Practice dist≈144 > 120 ✓ */}
-            <text x="255" y="168" textAnchor="middle"
+            <text x="264" y="168" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
               The Believer
             </text>
-            <text x="255" y="181" textAnchor="middle"
+            <text x="264" y="181" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Proof + Purpose
