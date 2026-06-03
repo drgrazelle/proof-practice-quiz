@@ -12,13 +12,10 @@ import Link from "next/link";
  *   embedScript: { src: string, formId: string }
  */
 export default function EmailGatePage({ embedScript }) {
-  // Inject beehiiv script into its target div on mount,
-  // matching the exact pattern used in ResultsPage.js.
   useEffect(() => {
     if (!embedScript?.src || !embedScript?.formId) return;
     const container = document.getElementById("beehiiv-embed-target");
     if (!container) return;
-    // Guard: don't inject twice
     if (container.querySelector(`script[src="${embedScript.src}"]`)) return;
     const script = document.createElement("script");
     script.src = embedScript.src;
@@ -29,6 +26,9 @@ export default function EmailGatePage({ embedScript }) {
 
   return (
     <main className="min-h-screen bg-navy flex flex-col">
+
+      {/* ── Progress complete bar (Option D) ── */}
+      <div className="w-full h-1" style={{ background: "#E6C280" }} />
 
       {/* ── Header ── */}
       <header className="px-6 py-5 flex items-center justify-between max-w-2xl mx-auto w-full">
@@ -47,8 +47,21 @@ export default function EmailGatePage({ embedScript }) {
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <div className="w-full max-w-[480px] flex flex-col gap-6">
 
-          {/* Heading */}
+          {/* Option B — "Pattern identified" badge + heading */}
           <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <span
+                className="w-2 h-2 rounded-full shrink-0"
+                style={{ background: "#E6C280" }}
+              />
+              <span
+                className="text-xs font-semibold tracking-widest uppercase"
+                style={{ color: "#E6C280" }}
+              >
+                Pattern identified
+              </span>
+            </div>
+
             <h1 className="text-slate font-extrabold text-3xl sm:text-4xl leading-tight tracking-tight">
               We found your pattern.
             </h1>
@@ -58,7 +71,7 @@ export default function EmailGatePage({ embedScript }) {
             </p>
           </div>
 
-          {/* Beehiiv embed — script injected into this div on mount */}
+          {/* Beehiiv embed */}
           <div id="beehiiv-embed-target" className="w-full" />
 
           {/* Disclaimer */}
