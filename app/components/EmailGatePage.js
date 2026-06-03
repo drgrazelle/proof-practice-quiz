@@ -12,27 +12,19 @@ import Link from "next/link";
  *   embedScript: { src: string, formId: string }
  */
 export default function EmailGatePage({ embedScript }) {
+  // Inject beehiiv script into its target div on mount,
+  // matching the exact pattern used in ResultsPage.js.
   useEffect(() => {
     if (!embedScript?.src || !embedScript?.formId) return;
-
-    // Remove any previously injected script for this form
-    const existing = document.getElementById("beehiiv-gate-script");
-    if (existing) existing.remove();
-
+    const container = document.getElementById("beehiiv-embed-target");
+    if (!container) return;
+    // Guard: don't inject twice
+    if (container.querySelector(`script[src="${embedScript.src}"]`)) return;
     const script = document.createElement("script");
-    script.id = "beehiiv-gate-script";
     script.src = embedScript.src;
-    script.setAttribute("data-form-id", embedScript.formId);
-    script.setAttribute("data-form-url",
-      `https://embeds.beehiiv.com/v3/subscribe/form/${embedScript.formId}`
-    );
     script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      const s = document.getElementById("beehiiv-gate-script");
-      if (s) s.remove();
-    };
+    script.setAttribute("data-beehiiv-form", embedScript.formId);
+    container.appendChild(script);
   }, [embedScript]);
 
   return (
@@ -66,7 +58,7 @@ export default function EmailGatePage({ embedScript }) {
             </p>
           </div>
 
-          {/* Beehiiv embed */}
+          {/* Beehiiv embed — script injected into this div on mount */}
           <div id="beehiiv-embed-target" className="w-full" />
 
           {/* Disclaimer */}

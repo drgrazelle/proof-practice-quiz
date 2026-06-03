@@ -340,7 +340,7 @@ export default function QuizPage() {
                     ${isSelected
                       ? "bg-golden text-navy border-golden font-semibold"
                       : wasPreviousAnswer
-                        ? "bg-navy/60 border-golden/40 text-slate cursor-pointer"
+                        ? "bg-golden text-navy border-golden font-semibold cursor-pointer"
                         : selected !== null
                           ? "bg-navy/40 border-steel/20 text-slate/40 cursor-default"
                           : "bg-navy/60 border-steel/30 text-slate hover:border-golden/60 hover:bg-navy/80 cursor-pointer"
