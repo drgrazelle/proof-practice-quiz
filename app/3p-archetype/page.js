@@ -49,18 +49,6 @@ export default function ArchetypeMapPage() {
   return (
     <main className="min-h-screen bg-navy flex flex-col">
 
-      {/* ── Header ── */}
-      <header className="px-6 py-5 flex items-center justify-between max-w-2xl mx-auto w-full">
-        <Link
-          href="/"
-          className="text-slate text-sm font-semibold tracking-widest uppercase hover:text-golden transition-colors"
-        >
-          Health Habit Consistency Quiz
-        </Link>
-        <Link href="/" className="text-slate/60 text-xs hover:text-slate transition-colors">
-          Take the quiz
-        </Link>
-      </header>
 
       <div className="flex-1 flex flex-col items-center px-6 py-10 max-w-2xl mx-auto w-full gap-16">
 
