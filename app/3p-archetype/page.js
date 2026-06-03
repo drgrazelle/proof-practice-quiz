@@ -14,18 +14,35 @@ export const metadata = {
   },
 };
 
-// Shared Venn geometry
-const R = 115;
+// ── Shared Venn geometry ──────────────────────────────────────────────────────
+// Equilateral triangle, side = 140px, R = 120px → overlap = 100px per pair
+// All archetype label positions verified to fall in correct Venn regions.
+const R = 120;
+const CX_PROOF = 200, CY_PROOF = 148;
+const CX_PRAC  = 130, CY_PRAC  = 269;
+const CX_PUR   = 270, CY_PUR   = 269;
+
 const PROOF_COLOR    = "#D4A847";
 const PRACTICE_COLOR = "#87CEAB";
 const PURPOSE_COLOR  = "#C4A8D4";
+const FONT          = "system-ui, -apple-system, sans-serif";
 
-// Circle centers — equilateral triangle arrangement
-// PROOF top, PRACTICE bottom-left, PURPOSE bottom-right
-// Positions verified: all archetype labels fall in correct Venn regions
-const CX_PROOF = 200,  CY_PROOF = 120;
-const CX_PRAC  = 127,  CY_PRAC  = 255;
-const CX_PUR   = 273,  CY_PUR   = 255;
+// Shared circle definitions used in both diagrams
+function VennCircles({ fillOpacity = 0.18 }) {
+  return (
+    <>
+      <circle cx={CX_PROOF} cy={CY_PROOF} r={R}
+        fill={PROOF_COLOR}    fillOpacity={fillOpacity}
+        stroke={PROOF_COLOR}  strokeWidth="1.5" />
+      <circle cx={CX_PRAC}  cy={CY_PRAC}  r={R}
+        fill={PRACTICE_COLOR} fillOpacity={fillOpacity}
+        stroke={PRACTICE_COLOR} strokeWidth="1.5" />
+      <circle cx={CX_PUR}   cy={CY_PUR}   r={R}
+        fill={PURPOSE_COLOR}  fillOpacity={fillOpacity}
+        stroke={PURPOSE_COLOR} strokeWidth="1.5" />
+    </>
+  );
+}
 
 export default function ArchetypeMapPage() {
   return (
@@ -64,106 +81,59 @@ export default function ArchetypeMapPage() {
             </p>
           </div>
 
-          {/* Framework Venn diagram */}
+          {/* Framework Venn — same geometry as archetype diagram, pillar labels only */}
           <svg
-            viewBox="0 0 400 410"
+            viewBox="0 0 400 420"
             xmlns="http://www.w3.org/2000/svg"
             className="w-full"
             role="img"
             aria-label="Venn diagram of the three pillars: Proof, Practice, and Purpose"
           >
-            {/* ── Circles ── */}
-            <circle cx={CX_PROOF} cy={CY_PROOF} r={R}
-              fill={PROOF_COLOR}    fillOpacity="0.2"
-              stroke={PROOF_COLOR}  strokeWidth="1.5" />
-            <circle cx={CX_PRAC}  cy={CY_PRAC}  r={R}
-              fill={PRACTICE_COLOR} fillOpacity="0.2"
-              stroke={PRACTICE_COLOR} strokeWidth="1.5" />
-            <circle cx={CX_PUR}   cy={CY_PUR}   r={R}
-              fill={PURPOSE_COLOR}  fillOpacity="0.2"
-              stroke={PURPOSE_COLOR} strokeWidth="1.5" />
+            <VennCircles fillOpacity={0.18} />
 
-            {/* ── PROOF label — top of Proof circle only region ── */}
-            <text
-              x="200" y="50"
-              textAnchor="middle"
-              fill={PROOF_COLOR}
-              fontWeight="700"
-              fontSize="15"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              letterSpacing="2"
-            >
+            {/* PROOF — above top of circle */}
+            <text x="200" y="22" textAnchor="middle"
+              fill={PROOF_COLOR} fontWeight="700" fontSize="14"
+              fontFamily={FONT} letterSpacing="2">
               PROOF
             </text>
-            <text
-              x="200" y="67"
-              textAnchor="middle"
-              fill="white" fillOpacity="0.6"
-              fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif"
-            >
+            <text x="200" y="38" textAnchor="middle"
+              fill="white" fillOpacity="0.55" fontSize="11"
+              fontFamily={FONT}>
               Knowing what actually works
             </text>
 
-            {/* ── PRACTICE label — bottom-left of Practice only region ── */}
-            <text
-              x="90" y="300"
-              textAnchor="middle"
-              fill={PRACTICE_COLOR}
-              fontWeight="700"
-              fontSize="13.5"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              letterSpacing="2"
-            >
+            {/* PRACTICE — lower-left region */}
+            <text x="82" y="308" textAnchor="middle"
+              fill={PRACTICE_COLOR} fontWeight="700" fontSize="13"
+              fontFamily={FONT} letterSpacing="2">
               PRACTICE
             </text>
-            <text
-              x="90" y="316"
-              textAnchor="middle"
-              fill="white" fillOpacity="0.6"
-              fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif"
-            >
+            <text x="82" y="323" textAnchor="middle"
+              fill="white" fillOpacity="0.55" fontSize="11"
+              fontFamily={FONT}>
               A system that
             </text>
-            <text
-              x="90" y="330"
-              textAnchor="middle"
-              fill="white" fillOpacity="0.6"
-              fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif"
-            >
+            <text x="82" y="338" textAnchor="middle"
+              fill="white" fillOpacity="0.55" fontSize="11"
+              fontFamily={FONT}>
               survives real life
             </text>
 
-            {/* ── PURPOSE label — bottom-right of Purpose only region ── */}
-            <text
-              x="310" y="300"
-              textAnchor="middle"
-              fill={PURPOSE_COLOR}
-              fontWeight="700"
-              fontSize="13.5"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              letterSpacing="2"
-            >
+            {/* PURPOSE — lower-right region */}
+            <text x="318" y="308" textAnchor="middle"
+              fill={PURPOSE_COLOR} fontWeight="700" fontSize="13"
+              fontFamily={FONT} letterSpacing="2">
               PURPOSE
             </text>
-            <text
-              x="310" y="316"
-              textAnchor="middle"
-              fill="white" fillOpacity="0.6"
-              fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif"
-            >
+            <text x="318" y="323" textAnchor="middle"
+              fill="white" fillOpacity="0.55" fontSize="11"
+              fontFamily={FONT}>
               A reason that
             </text>
-            <text
-              x="310" y="330"
-              textAnchor="middle"
-              fill="white" fillOpacity="0.6"
-              fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif"
-            >
+            <text x="318" y="338" textAnchor="middle"
+              fill="white" fillOpacity="0.55" fontSize="11"
+              fontFamily={FONT}>
               {"doesn't expire"}
             </text>
           </svg>
@@ -187,164 +157,143 @@ export default function ArchetypeMapPage() {
             </p>
           </div>
 
-          {/* Archetype Venn diagram */}
+          {/* Archetype Venn — same geometry, archetype labels instead of pillar descriptions */}
           <svg
-            viewBox="0 0 400 460"
+            viewBox="0 0 400 470"
             xmlns="http://www.w3.org/2000/svg"
             className="w-full"
             role="img"
             aria-label="Venn diagram mapping all 8 archetypes to their positions in the 3P Framework"
           >
-            {/* ── Circles (slightly more transparent so labels read clearly) ── */}
-            <circle cx={CX_PROOF} cy={CY_PROOF} r={R}
-              fill={PROOF_COLOR}    fillOpacity="0.12"
-              stroke={PROOF_COLOR}  strokeWidth="1.5" />
-            <circle cx={CX_PRAC}  cy={CY_PRAC}  r={R}
-              fill={PRACTICE_COLOR} fillOpacity="0.12"
-              stroke={PRACTICE_COLOR} strokeWidth="1.5" />
-            <circle cx={CX_PUR}   cy={CY_PUR}   r={R}
-              fill={PURPOSE_COLOR}  fillOpacity="0.12"
-              stroke={PURPOSE_COLOR} strokeWidth="1.5" />
+            <VennCircles fillOpacity={0.12} />
 
-            {/* ── Faint pillar axis labels ── */}
-            <text x="200" y="16" textAnchor="middle"
-              fill={PROOF_COLOR} fillOpacity="0.55"
+            {/* ── Faint pillar axis labels (same positions as framework diagram) ── */}
+            <text x="200" y="22" textAnchor="middle"
+              fill={PROOF_COLOR} fillOpacity="0.5"
               fontSize="9" fontWeight="600"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              letterSpacing="1.5">
+              fontFamily={FONT} letterSpacing="1.5">
               PROOF
             </text>
-            <text x="46" y="378" textAnchor="middle"
-              fill={PRACTICE_COLOR} fillOpacity="0.55"
+            <text x="46" y="394" textAnchor="middle"
+              fill={PRACTICE_COLOR} fillOpacity="0.5"
               fontSize="9" fontWeight="600"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              letterSpacing="1.5">
+              fontFamily={FONT} letterSpacing="1.5">
               PRACTICE
             </text>
-            <text x="354" y="378" textAnchor="middle"
-              fill={PURPOSE_COLOR} fillOpacity="0.55"
+            <text x="354" y="394" textAnchor="middle"
+              fill={PURPOSE_COLOR} fillOpacity="0.5"
               fontSize="9" fontWeight="600"
-              fontFamily="system-ui, -apple-system, sans-serif"
-              letterSpacing="1.5">
+              fontFamily={FONT} letterSpacing="1.5">
               PURPOSE
             </text>
 
-            {/* ────────────────────────────
-                SINGLE-CIRCLE REGIONS
-            ──────────────────────────── */}
+            {/* ── Single-circle regions ── */}
 
             {/* THE READER — Proof only, top */}
-            <text x="200" y="49" textAnchor="middle"
+            <text x="200" y="52" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="12.5"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Reader
             </text>
-            <text x="200" y="63" textAnchor="middle"
+            <text x="200" y="66" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="10"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Has Proof only
             </text>
 
-            {/* THE OPTIMIZER — Practice only, bottom-left */}
-            <text x="82" y="302" textAnchor="middle"
+            {/* THE OPTIMIZER — Practice only, lower-left */}
+            <text x="82" y="320" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11.5"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Optimizer
             </text>
-            <text x="82" y="315" textAnchor="middle"
+            <text x="82" y="333" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Has Practice only
             </text>
 
-            {/* THE SEEKER — Purpose only, bottom-right */}
-            <text x="318" y="302" textAnchor="middle"
+            {/* THE SEEKER — Purpose only, lower-right */}
+            <text x="318" y="320" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11.5"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Seeker
             </text>
-            <text x="318" y="315" textAnchor="middle"
+            <text x="318" y="333" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Has Purpose only
             </text>
 
-            {/* ────────────────────────────
-                TWO-CIRCLE INTERSECTIONS
-            ──────────────────────────── */}
+            {/* ── Two-circle intersections ── */}
 
-            {/* THE BURNER — Proof + Practice, left intersection */}
-            <text x="150" y="178" textAnchor="middle"
+            {/* THE BURNER — Proof + Practice, left */}
+            <text x="155" y="192" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Burner
             </text>
-            <text x="150" y="191" textAnchor="middle"
+            <text x="155" y="205" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Proof + Practice
             </text>
 
-            {/* THE BELIEVER — Proof + Purpose, right intersection */}
-            <text x="250" y="178" textAnchor="middle"
+            {/* THE BELIEVER — Proof + Purpose, right */}
+            <text x="245" y="192" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Believer
             </text>
-            <text x="250" y="191" textAnchor="middle"
+            <text x="245" y="205" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Proof + Purpose
             </text>
 
-            {/* THE DEVOTED — Practice + Purpose, bottom intersection */}
-            <text x="200" y="299" textAnchor="middle"
+            {/* THE DEVOTED — Practice + Purpose, bottom */}
+            <text x="200" y="308" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Devoted
             </text>
-            <text x="200" y="312" textAnchor="middle"
+            <text x="200" y="321" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Practice + Purpose
             </text>
 
-            {/* ────────────────────────────
-                TRIPLE INTERSECTION CENTER
-            ──────────────────────────── */}
+            {/* ── Triple intersection ── */}
 
-            {/* THE PRACTITIONER — all three */}
-            <text x="200" y="210" textAnchor="middle"
-              fill="white" fontWeight="700" fontSize="11"
-              fontFamily="system-ui, -apple-system, sans-serif">
+            {/* THE PRACTITIONER — all three, center */}
+            <text x="200" y="218" textAnchor="middle"
+              fill="white" fontWeight="700" fontSize="11.5"
+              fontFamily={FONT}>
               The Practitioner
             </text>
-            <text x="200" y="223" textAnchor="middle"
+            <text x="200" y="231" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Has all three
             </text>
 
-            {/* ────────────────────────────
-                OUTSIDE ALL CIRCLES
-            ──────────────────────────── */}
+            {/* ── Outside all circles ── */}
 
-            {/* Dashed boundary indicating "outside the framework" */}
-            <ellipse cx="200" cy="416" rx="87" ry="24"
+            <ellipse cx="200" cy="435" rx="87" ry="24"
               fill="none"
               stroke="rgba(255,255,255,0.15)"
               strokeWidth="1"
               strokeDasharray="4 3" />
 
             {/* THE RESTARTER — outside all circles */}
-            <text x="200" y="412" textAnchor="middle"
+            <text x="200" y="431" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="12"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               The Restarter
             </text>
-            <text x="200" y="426" textAnchor="middle"
+            <text x="200" y="445" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
-              fontFamily="system-ui, -apple-system, sans-serif">
+              fontFamily={FONT}>
               Building from the start
             </text>
           </svg>
