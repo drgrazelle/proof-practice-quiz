@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Optimizer — Your 3P Profile | Proof &amp; Practice</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  @page { size: letter; margin: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 14px; line-height: 1.65; color: #1A2B48; background: #fff; }
+  h1, h2, h3, h4 { font-family: Georgia, 'Times New Roman', serif; }
+  .page { width: 800px; margin: 0 auto; padding: 60px; min-height: 1056px; page-break-after: always; position: relative; }
+  .page:last-child { page-break-after: avoid; }
+  .cover-page { background-color: #1A2B48; color: #F4F7FA; display: flex; flex-direction: column; justify-content: space-between; }
+  .cover-brand { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #E6C280; }
+  .cover-middle { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px 0; }
+  .profile-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #5E7A9E; margin-bottom: 16px; }
+  .archetype-name { font-size: 60px; font-weight: bold; color: #ffffff; line-height: 1.05; margin-bottom: 20px; }
+  .one-line-truth { font-size: 19px; color: #9EACC0; font-style: italic; margin-bottom: 56px; line-height: 1.5; max-width: 540px; }
+  .pillar-strip { display: flex; gap: 16px; }
+  .pillar-card { flex: 1; padding: 22px 16px; border-radius: 10px; text-align: center; }
+  .pillar-card.high-proof { background-color: #F9D08B; }
+  .pillar-card.high-practice { background-color: #A3D9C9; }
+  .pillar-card.high-purpose { background-color: #C9BFE3; }
+  .pillar-card.low { background-color: #2A3A52; }
+  .pillar-card-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 10px; }
+  .pillar-card.high-proof .pillar-card-label, .pillar-card.high-practice .pillar-card-label, .pillar-card.high-purpose .pillar-card-label { color: #1A2B48; }
+  .pillar-card.low .pillar-card-label { color: #9EACC0; }
+  .pillar-status { font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .pillar-card.high-proof .pillar-status, .pillar-card.high-practice .pillar-status, .pillar-card.high-purpose .pillar-status { color: #1A2B48; }
+  .pillar-card.low .pillar-status { color: #9EACC0; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+  .dot-high { background-color: #76C043; }
+  .dot-low { background-color: #E05252; }
+  .cover-footer { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #5E7A9E; text-align: center; }
+  .white-page { background: #fff; }
+  .page-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E6C280; margin-bottom: 6px; }
+  .page-title { font-size: 32px; color: #1A2B48; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 2px solid #E6C280; }
+  .section { margin-bottom: 28px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #E6C280; margin-bottom: 6px; }
+  p { font-size: 14px; line-height: 1.7; color: #2A3A52; margin-bottom: 12px; }
+  p:last-child { margin-bottom: 0; }
+  .reframe { border-left: 3px solid #E6C280; padding: 14px 20px; background: #FFF9F0; margin: 4px 0; font-style: italic; font-family: Georgia, serif; font-size: 15px; color: #1A2B48; line-height: 1.6; }
+  ul.bullets { list-style: none; padding: 0; }
+  ul.bullets li { padding-left: 18px; position: relative; margin-bottom: 7px; font-size: 14px; line-height: 1.6; color: #2A3A52; }
+  ul.bullets li::before { content: '·'; position: absolute; left: 4px; color: #E6C280; font-size: 20px; line-height: 1.1; }
+  .action-plan-header { font-family: Georgia, serif; font-size: 22px; color: #1A2B48; margin: 32px 0 20px; padding-top: 28px; border-top: 1px solid #E0E8F0; }
+  .action-step { margin-bottom: 22px; }
+  .action-step-title { font-weight: 700; font-size: 14px; color: #1A2B48; margin-bottom: 7px; }
+  .inline-label { font-style: italic; color: #5E7A9E; }
+  .cta-block { background: #1A2B48; color: #F4F7FA; padding: 16px 24px; border-radius: 8px; margin: 16px 0; text-align: center; }
+  .cta-block .cta-btn { font-family: Georgia, serif; font-size: 15px; font-weight: bold; color: #E6C280; }
+  .cta-block .cta-secondary { font-size: 12px; color: #9EACC0; margin-top: 6px; }
+  .signoff { margin-top: 36px; padding-top: 20px; border-top: 1px solid #E0E8F0; }
+  .signoff-name { font-family: Georgia, serif; font-size: 18px; color: #1A2B48; margin-bottom: 4px; }
+  .signoff-tagline { font-size: 12px; color: #9EACC0; }
+  .framework-cards { display: flex; gap: 16px; margin: 24px 0; }
+  .framework-card { flex: 1; padding: 20px; border-radius: 10px; }
+  .framework-card.proof-card { background-color: #F9D08B; }
+  .framework-card.practice-card { background-color: #A3D9C9; }
+  .framework-card.purpose-card { background-color: #C9BFE3; }
+  .framework-card h3 { font-family: Georgia, serif; font-size: 15px; color: #1A2B48; margin-bottom: 8px; }
+  .framework-card p { font-size: 12px; line-height: 1.6; color: #1A2B48; margin-bottom: 0; }
+  .framework-body p { font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 16px 0; }
+  thead th { background-color: #1A2B48; color: #fff; padding: 10px 12px; text-align: left; font-family: Georgia, serif; font-size: 12px; }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid #E0E8F0; vertical-align: top; line-height: 1.5; }
+  tbody tr:nth-child(even) td { background-color: #F4F7FA; }
+  tbody tr.highlighted td { background-color: #FFF3CC !important; font-weight: 600; }
+  tbody tr.highlighted td:first-child::after { content: ' ◀'; color: #E6C280; font-size: 11px; }
+  .table-note { margin-top: 24px; }
+  .table-note p { font-size: 13px; }
+</style>
+</head>
+<body>
+
+<div class="page cover-page">
+  <div class="cover-brand">Proof &amp; Practice</div>
+  <div class="cover-middle">
+    <p class="profile-eyebrow">Your 3P Profile</p>
+    <h1 class="archetype-name">The Optimizer</h1>
+    <p class="one-line-truth">You've built the routine. You just built it on the wrong foundation.</p>
+    <div class="pillar-strip">
+      <div class="pillar-card low">
+        <div class="pillar-card-label">Proof</div>
+        <div class="pillar-status"><span class="status-dot dot-low"></span>Low</div>
+      </div>
+      <div class="pillar-card high-practice">
+        <div class="pillar-card-label">Practice</div>
+        <div class="pillar-status"><span class="status-dot dot-high"></span>High</div>
+      </div>
+      <div class="pillar-card low">
+        <div class="pillar-card-label">Purpose</div>
+        <div class="pillar-status"><span class="status-dot dot-low"></span>Low</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-footer">Health Habit Consistency Quiz Result</div>
+</div>
+
+<div class="page white-page">
+  <p class="page-eyebrow">Your 3P Profile</p>
+  <h2 class="page-title">The Optimizer</h2>
+
+  <div class="section">
+    <p class="section-label">Your Strength</p>
+    <p>You show up. You've built habits that hold their shape better than most people manage. That consistency is the muscle most people never develop.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Your Specific Situation</p>
+    <p>You show up. You have routines, maybe you've had them for years. You're the person who actually does the things most people only talk about. But somewhere underneath all that effort, something isn't quite adding up. The results aren't matching the work. The routine keeps needing to be rebuilt. And when life disrupts it, there's nothing underneath it to rebuild from.</p>
+    <p>The health industry is designed for you. It knows you'll try things. Cold plunges. Supplements. Tracking protocols. Biohacking the edges. It profits from your willingness to optimize, because optimization without a strong evidence foundation is just expensive experimentation. The fundamentals — six pillars, decades of research, settled science — aren't being sold as aggressively as whatever launched last month. But they're what actually works.</p>
+    <p>Even with the Proof in place, a routine running on inertia alone has no anchor when life shifts. That's the second missing piece. Your effort is real. It deserves both a better foundation and a deeper reason.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">You Are Someone Who</p>
+    <ul class="bullets">
+      <li>Has a health routine but sometimes wonders quietly whether any of it is actually working</li>
+      <li>Is drawn to new approaches, protocols, and tools, and switches when something shinier appears</li>
+      <li>Keeps the habit going until life disrupts it, then finds it hard to come back</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <p class="section-label">The Reframe</p>
+    <div class="reframe">You already have the hardest thing. The willingness to show up. What's missing is something worth showing up for, aimed in the right direction.</div>
+  </div>
+
+  <h3 class="action-plan-header">Your Action Plan</h3>
+
+  <div class="section">
+    <p class="section-label">What You Need</p>
+    <p>Two pieces. An evidence foundation that separates what actually works from what's been marketed at you. And a reason that lives deeper than the routine itself, so when the routine breaks, you know why you're rebuilding it.</p>
+    <p>The trap for Optimizers is mistaking activity for progress. You've trained yourself to show up, which is the rarest health skill there is. The cost is that the showing up has been happening on top of a foundation you never checked. The fix isn't to do less. It's to audit what you're already doing and aim the same effort at what the research actually supports.</p>
+  </div>
+
+  <div class="action-step">
+    <p class="action-step-title">1. Audit one habit you do regularly. Check it against the fundamentals.</p>
+    <p>Pick something you do at least 3–4 times a week as part of your health routine. Ask: Is this one of the six fundamentals (nutrition, movement, sleep, stress management, social connection, avoiding harmful substances), or is it adjacent to them? Where did I first hear about this, and did the person telling me have something to sell? If I removed this, would the foundation still hold, or am I treating an optimization as a fundamental?</p>
+    <p>The goal isn't to drop the habit. It's to know whether it's load-bearing or decorative. Most Optimizer routines have one or two truly foundational habits and several that just feel productive.</p>
+  </div>
+
+  <div class="action-step">
+    <p class="action-step-title">2. Stop adding for the next 30 days.</p>
+    <p>The Optimizer's instinct when something isn't working is to add. A new protocol, a new supplement, a new tracker. For the next 30 days: no new health-related additions. No new supplements, no new tools, no new protocols, no new tracking apps. If you encounter something interesting, write it down and revisit in 30 days. What you'll notice in that window is which habits are actually doing the work, and which were just filling space.</p>
+  </div>
+
+  <div class="action-step">
+    <p class="action-step-title">3. Start finding the reason underneath the routine.</p>
+    <p>The Optimizer is the archetype most likely to lose habits to a major life shift, because the habits were built on inertia rather than on a reason. Try this: write the answer to one question.</p>
+    <p><span class="inline-label">If I lost all my current health habits tomorrow, what's the one thing I would most regret losing the ability to do?</span></p>
+    <p>Not the habits themselves. The thing the habits were quietly making possible. The energy for someone you love. The ability to keep working on something that matters. The version of yourself you've been building toward. That's closer to your real purpose than any of the routines you've been running.</p>
+  </div>
+
+  <div class="section">
+    <p class="section-label">What's Next</p>
+    <p>The work ahead is depth, not addition. You don't need more habits. You need a clearer foundation under the ones you already have, and a reason that keeps them standing when life shifts.</p>
+    <p>Every Saturday, you'll get the Proof &amp; Practice newsletter. Each issue helps you sort signal from noise in health information and goes deeper on what actually works.</p>
+    <div class="cta-block">
+      <p class="cta-btn">Get my Custom Action Plan</p>
+      <p class="cta-secondary">Or browse the newsletter archive</p>
+    </div>
+  </div>
+
+  <div class="signoff">
+    <p class="signoff-name">Grazelle 🌱</p>
+    <p class="signoff-tagline">Proof &amp; Practice — Evidence-based health for people too busy for perfection.</p>
+  </div>
+</div>
+
+<div class="page white-page">
+  <p class="page-eyebrow">The Framework</p>
+  <h2 class="page-title">The 3P Framework</h2>
+  <p>Most people who struggle with health consistency aren't missing willpower. They're missing one piece of a three-part system. Three pieces. Each one does work the other two can't.</p>
+  <div class="framework-cards">
+    <div class="framework-card proof-card">
+      <h3>Proof</h3>
+      <p>Knowing what actually works. Basic health literacy — the fundamentals of how your body works and what reliably keeps it well. The six fundamentals: nutrition, movement, sleep, stress management, social connection, avoiding harmful substances. Settled science. It's what actually works.</p>
+    </div>
+    <div class="framework-card practice-card">
+      <h3>Practice</h3>
+      <p>A system that bends with real life. A set of skills that lets you build your own system — one that holds whether life is peaceful or chaotic. You learn how to adjust the intensity of a habit instead of dropping it, and how to come back without making a setback bigger than it needs to be.</p>
+    </div>
+    <div class="framework-card purpose-card">
+      <h3>Purpose</h3>
+      <p>A reason that outlasts the latest goal. Research shows only 4.3% of people sustain behavior change after a health scare. Purpose is what runs deeper — usually connected to someone you love, a life you're building, a version of yourself you've decided to become.</p>
+    </div>
+  </div>
+  <div class="framework-body">
+    <div class="section">
+      <p class="section-label">Proof — The Full Picture</p>
+      <p>The industry is always finding the next thing. Cold plunges. Red light therapy. Continuous glucose monitors. But decades of research already point to the same six fundamentals. Proof also means protecting yourself from health misinformation. Biohacking the edges while neglecting the fundamentals is like optimizing your sprinkler system while your house is on fire.</p>
+    </div>
+    <div class="section">
+      <p class="section-label">Practice — The Full Picture</p>
+      <p>Knowing what to do is not the same as doing it on a deadline Wednesday with three meetings and no time to think. The skills give you something to fall back on when the plan stops working. Practice is what lets you stay in motion through the hard weeks instead of restarting after them. Most health guidance stops exactly where real life starts. Practice begins there.</p>
+    </div>
+    <div class="section">
+      <p class="section-label">Purpose — The Full Picture</p>
+      <p>Most motivation runs on fear. Fear is effective as a starting point. It doesn't carry you through the Wednesday when everything falls apart. Purpose is what runs deeper — something that's still true on the worst Wednesday of the year.</p>
+    </div>
+    <div class="section">
+      <p class="section-label">How the Pieces Work Together</p>
+      <p><strong>Proof alone</strong> gets stuck in research mode. <strong>Practice alone</strong> runs on inertia — no foundation to rebuild from when life disrupts it. <strong>Purpose alone</strong> burns through motivation with nowhere to channel the energy. All three together is what people mean when they say "I just need to be consistent." Consistency is the result. The three pieces are the cause.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page white-page">
+  <p class="page-eyebrow">The Full Picture</p>
+  <h2 class="page-title">Where You Sit in the Bigger Picture</h2>
+  <p>Every combination of these three pieces produces a different archetype. There are 8 of them. Yours is highlighted below.</p>
+  <table>
+    <thead><tr><th>Archetype</th><th>What they have</th><th>What's missing</th><th>One-line truth</th></tr></thead>
+    <tbody>
+      <tr><td><strong>The Restarter</strong></td><td>Nothing yet</td><td>Proof + Practice + Purpose</td><td>You've been trying. The system underneath the trying hasn't been built yet.</td></tr>
+      <tr><td><strong>The Reader</strong></td><td>Proof</td><td>Practice + Purpose</td><td>You know more than most. You're living less than you could.</td></tr>
+      <tr class="highlighted"><td><strong>The Optimizer</strong></td><td>Practice</td><td>Proof + Purpose</td><td>You've built the routine. You just built it on the wrong foundation.</td></tr>
+      <tr><td><strong>The Seeker</strong></td><td>Purpose</td><td>Proof + Practice</td><td>You have the most important thing. Now you need something to build it on.</td></tr>
+      <tr><td><strong>The Burner</strong></td><td>Proof + Practice</td><td>Purpose</td><td>You built something real. It just ran out of fuel.</td></tr>
+      <tr><td><strong>The Believer</strong></td><td>Proof + Purpose</td><td>Practice</td><td>You know it and you feel it. You just can't make it survive real life.</td></tr>
+      <tr><td><strong>The Devoted</strong></td><td>Practice + Purpose</td><td>Proof</td><td>You show up with your whole heart. You deserve a better foundation.</td></tr>
+      <tr><td><strong>The Practitioner</strong></td><td>All three</td><td>Nothing</td><td>All three pieces in place, working together.</td></tr>
+    </tbody>
+  </table>
+  <div class="table-note">
+    <p class="section-label">How to Read the Map</p>
+    <p>Each archetype represents a real person trying to build sustainable health, and each one is dealing with a different gap. The further you sit from the center, the more pieces you're still building. The center is where the three pieces meet and the architecture holds itself up.</p>
+    <p>Most people are missing more than they realize. Most people also have more strength than they realize. The map shows you both at the same time. The work is the same for everyone, even when the starting point is different: build the piece you're missing next.</p>
+  </div>
+</div>
+
+</body>
+</html>
