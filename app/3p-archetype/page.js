@@ -15,7 +15,8 @@ export const metadata = {
 };
 
 // ── Shared Venn geometry ──────────────────────────────────────────────────────
-// Equilateral triangle, side = 140px, R = 120px → overlap = 100px per pair
+// Equilateral triangle, side = 140px, R = 120px → ~100px overlap per pair
+// CY_PROOF = 148 → circle top = 28px from SVG top edge (room for faint axis label)
 // All archetype label positions verified to fall in correct Venn regions.
 const R = 120;
 const CX_PROOF = 200, CY_PROOF = 148;
@@ -25,9 +26,8 @@ const CX_PUR   = 270, CY_PUR   = 269;
 const PROOF_COLOR    = "#D4A847";
 const PRACTICE_COLOR = "#87CEAB";
 const PURPOSE_COLOR  = "#C4A8D4";
-const FONT          = "system-ui, -apple-system, sans-serif";
+const FONT           = "system-ui, -apple-system, sans-serif";
 
-// Shared circle definitions used in both diagrams
 function VennCircles({ fillOpacity = 0.18 }) {
   return (
     <>
@@ -67,7 +67,6 @@ export default function ArchetypeMapPage() {
             SECTION 1 — THE 3P FRAMEWORK
         ══════════════════════════════════════ */}
         <section className="w-full flex flex-col gap-5">
-
           <div>
             <p className="text-golden text-xs font-semibold tracking-widest uppercase mb-3">
               The Framework
@@ -81,7 +80,7 @@ export default function ArchetypeMapPage() {
             </p>
           </div>
 
-          {/* Framework Venn — same geometry as archetype diagram, pillar labels only */}
+          {/* Framework Venn */}
           <svg
             viewBox="0 0 400 420"
             xmlns="http://www.w3.org/2000/svg"
@@ -91,48 +90,48 @@ export default function ArchetypeMapPage() {
           >
             <VennCircles fillOpacity={0.18} />
 
-            {/* PROOF — above top of circle */}
-            <text x="200" y="22" textAnchor="middle"
+            {/* PROOF — inside top of Proof circle (circle top = y 28) */}
+            <text x="200" y="68" textAnchor="middle"
               fill={PROOF_COLOR} fontWeight="700" fontSize="14"
               fontFamily={FONT} letterSpacing="2">
               PROOF
             </text>
-            <text x="200" y="38" textAnchor="middle"
-              fill="white" fillOpacity="0.55" fontSize="11"
+            <text x="200" y="85" textAnchor="middle"
+              fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               Knowing what actually works
             </text>
 
-            {/* PRACTICE — lower-left region */}
+            {/* PRACTICE — lower-left region inside Practice circle */}
             <text x="82" y="308" textAnchor="middle"
               fill={PRACTICE_COLOR} fontWeight="700" fontSize="13"
               fontFamily={FONT} letterSpacing="2">
               PRACTICE
             </text>
             <text x="82" y="323" textAnchor="middle"
-              fill="white" fillOpacity="0.55" fontSize="11"
+              fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               A system that
             </text>
             <text x="82" y="338" textAnchor="middle"
-              fill="white" fillOpacity="0.55" fontSize="11"
+              fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               survives real life
             </text>
 
-            {/* PURPOSE — lower-right region */}
+            {/* PURPOSE — lower-right region inside Purpose circle */}
             <text x="318" y="308" textAnchor="middle"
               fill={PURPOSE_COLOR} fontWeight="700" fontSize="13"
               fontFamily={FONT} letterSpacing="2">
               PURPOSE
             </text>
             <text x="318" y="323" textAnchor="middle"
-              fill="white" fillOpacity="0.55" fontSize="11"
+              fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               A reason that
             </text>
             <text x="318" y="338" textAnchor="middle"
-              fill="white" fillOpacity="0.55" fontSize="11"
+              fill="white" fillOpacity="0.6" fontSize="11"
               fontFamily={FONT}>
               {"doesn't expire"}
             </text>
@@ -143,7 +142,6 @@ export default function ArchetypeMapPage() {
             SECTION 2 — THE 8 ARCHETYPES
         ══════════════════════════════════════ */}
         <section className="w-full flex flex-col gap-5">
-
           <div>
             <p className="text-golden text-xs font-semibold tracking-widest uppercase mb-3">
               The Archetypes
@@ -157,7 +155,7 @@ export default function ArchetypeMapPage() {
             </p>
           </div>
 
-          {/* Archetype Venn — same geometry, archetype labels instead of pillar descriptions */}
+          {/* Archetype Venn */}
           <svg
             viewBox="0 0 400 470"
             xmlns="http://www.w3.org/2000/svg"
@@ -167,35 +165,32 @@ export default function ArchetypeMapPage() {
           >
             <VennCircles fillOpacity={0.12} />
 
-            {/* ── Faint pillar axis labels (same positions as framework diagram) ── */}
-            <text x="200" y="22" textAnchor="middle"
-              fill={PROOF_COLOR} fillOpacity="0.5"
-              fontSize="9" fontWeight="600"
-              fontFamily={FONT} letterSpacing="1.5">
+            {/* ── Faint pillar axis labels (same x/y anchors as framework) ── */}
+            <text x="200" y="16" textAnchor="middle"
+              fill={PROOF_COLOR} fillOpacity="0.45"
+              fontSize="9" fontWeight="600" fontFamily={FONT} letterSpacing="1.5">
               PROOF
             </text>
-            <text x="46" y="394" textAnchor="middle"
-              fill={PRACTICE_COLOR} fillOpacity="0.5"
-              fontSize="9" fontWeight="600"
-              fontFamily={FONT} letterSpacing="1.5">
+            <text x="42" y="395" textAnchor="middle"
+              fill={PRACTICE_COLOR} fillOpacity="0.45"
+              fontSize="9" fontWeight="600" fontFamily={FONT} letterSpacing="1.5">
               PRACTICE
             </text>
-            <text x="354" y="394" textAnchor="middle"
-              fill={PURPOSE_COLOR} fillOpacity="0.5"
-              fontSize="9" fontWeight="600"
-              fontFamily={FONT} letterSpacing="1.5">
+            <text x="358" y="395" textAnchor="middle"
+              fill={PURPOSE_COLOR} fillOpacity="0.45"
+              fontSize="9" fontWeight="600" fontFamily={FONT} letterSpacing="1.5">
               PURPOSE
             </text>
 
             {/* ── Single-circle regions ── */}
 
-            {/* THE READER — Proof only, top */}
-            <text x="200" y="52" textAnchor="middle"
+            {/* THE READER — Proof only, top interior */}
+            <text x="200" y="68" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="12.5"
               fontFamily={FONT}>
               The Reader
             </text>
-            <text x="200" y="66" textAnchor="middle"
+            <text x="200" y="83" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="10"
               fontFamily={FONT}>
               Has Proof only
@@ -207,7 +202,7 @@ export default function ArchetypeMapPage() {
               fontFamily={FONT}>
               The Optimizer
             </text>
-            <text x="82" y="333" textAnchor="middle"
+            <text x="82" y="334" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
               fontFamily={FONT}>
               Has Practice only
@@ -219,7 +214,7 @@ export default function ArchetypeMapPage() {
               fontFamily={FONT}>
               The Seeker
             </text>
-            <text x="318" y="333" textAnchor="middle"
+            <text x="318" y="334" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9.5"
               fontFamily={FONT}>
               Has Purpose only
@@ -227,31 +222,35 @@ export default function ArchetypeMapPage() {
 
             {/* ── Two-circle intersections ── */}
 
-            {/* THE BURNER — Proof + Practice, left */}
-            <text x="155" y="192" textAnchor="middle"
+            {/* THE BURNER — Proof + Practice, upper-left intersection
+                Verified: inside Proof(200,148,r120) ✓  inside Practice(130,269,r120) ✓
+                           outside Purpose(270,269,r120) ✓ */}
+            <text x="142" y="170" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
               The Burner
             </text>
-            <text x="155" y="205" textAnchor="middle"
+            <text x="142" y="183" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Proof + Practice
             </text>
 
-            {/* THE BELIEVER — Proof + Purpose, right */}
-            <text x="245" y="192" textAnchor="middle"
+            {/* THE BELIEVER — Proof + Purpose, upper-right intersection
+                Verified: inside Proof ✓  inside Purpose ✓  outside Practice ✓ */}
+            <text x="258" y="170" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
               The Believer
             </text>
-            <text x="245" y="205" textAnchor="middle"
+            <text x="258" y="183" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Proof + Purpose
             </text>
 
-            {/* THE DEVOTED — Practice + Purpose, bottom */}
+            {/* THE DEVOTED — Practice + Purpose, bottom intersection
+                Verified: inside Practice ✓  inside Purpose ✓  outside Proof ✓ */}
             <text x="200" y="308" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="11"
               fontFamily={FONT}>
@@ -263,29 +262,27 @@ export default function ArchetypeMapPage() {
               Practice + Purpose
             </text>
 
-            {/* ── Triple intersection ── */}
+            {/* ── Triple intersection center ── */}
 
-            {/* THE PRACTITIONER — all three, center */}
-            <text x="200" y="218" textAnchor="middle"
+            {/* THE PRACTITIONER — all three
+                Center of triangle ≈ (200, 228) */}
+            <text x="200" y="222" textAnchor="middle"
               fill="white" fontWeight="700" fontSize="11.5"
               fontFamily={FONT}>
               The Practitioner
             </text>
-            <text x="200" y="231" textAnchor="middle"
+            <text x="200" y="235" textAnchor="middle"
               fill="white" fillOpacity="0.5" fontSize="9"
               fontFamily={FONT}>
               Has all three
             </text>
 
-            {/* ── Outside all circles ── */}
-
+            {/* ── Outside all circles — The Restarter ── */}
             <ellipse cx="200" cy="435" rx="87" ry="24"
               fill="none"
               stroke="rgba(255,255,255,0.15)"
               strokeWidth="1"
               strokeDasharray="4 3" />
-
-            {/* THE RESTARTER — outside all circles */}
             <text x="200" y="431" textAnchor="middle"
               fill="white" fontWeight="600" fontSize="12"
               fontFamily={FONT}>
