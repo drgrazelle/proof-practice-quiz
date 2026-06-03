@@ -145,6 +145,19 @@ const RAW_QUESTIONS = [
   },
 ];
 
+// ── Slug map ──────────────────────────────────────────────────────────────────
+
+const ARCHETYPE_SLUGS = {
+  restarter:    "/r-4291",
+  reader:       "/rd-7134",
+  optimizer:    "/op-5820",
+  seeker:       "/sk-3967",
+  burner:       "/br-6412",
+  believer:     "/bl-9053",
+  devoted:      "/dv-2748",
+  practitioner: "/pr-8361",
+};
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function shuffleArray(arr) {
@@ -193,14 +206,18 @@ export default function QuizPage() {
     setReady(true);
   }, []);
 
-  const [current, setCurrent] = useState(0);
-  const [scores, setScores]   = useState({ proof: 0, practice: 0, purpose: 0 });
+  const [current, setCurrent]   = useState(0);
+  const [scores, setScores]     = useState({ proof: 0, practice: 0, purpose: 0 });
   const [selected, setSelected] = useState(null);
 
+  // History stack: each entry is { optionIndex, pointsAdded, pillar }
+  // Lets us undo a selection when going back.
+  const [history, setHistory] = useState([]);
+
   // Use a ref so the timeout callback always sees fresh state
-  const stateRef = useRef({ current, scores, questions });
+  const stateRef = useRef({ current, scores, questions, history });
   useEffect(() => {
-    stateRef.current = { current, scores, questions };
+    stateRef.current = { current, scores, questions, history };
   });
 
   const total      = questions.length;
@@ -213,19 +230,36 @@ export default function QuizPage() {
     setSelected(optionIndex);
 
     setTimeout(() => {
-      const { current: cur, scores: sc, questions: qs } = stateRef.current;
-      const q = qs[cur];
+      const { current: cur, scores: sc, questions: qs, history: hist } = stateRef.current;
+      const q   = qs[cur];
       const pts = q.options[optionIndex].points;
       const newScores = { ...sc, [q.pillar]: sc[q.pillar] + pts };
 
       if (cur + 1 >= total) {
-        router.push(`/${getArchetype(newScores)}`);
+        router.push(ARCHETYPE_SLUGS[getArchetype(newScores)]);
       } else {
+        setHistory([...hist, { optionIndex, pointsAdded: pts, pillar: q.pillar }]);
         setScores(newScores);
         setCurrent(cur + 1);
         setSelected(null);
       }
     }, 420);
+  }
+
+  function handleBack() {
+    if (current === 0 || history.length === 0) return;
+    const prev = history[history.length - 1];
+    // Undo the score from the previous answer
+    setScores((sc) => ({
+      ...sc,
+      [prev.pillar]: sc[prev.pillar] - prev.pointsAdded,
+    }));
+    setHistory((h) => h.slice(0, -1));
+    setCurrent((c) => c - 1);
+    // Pre-select the answer they previously chose
+    setSelected(prev.optionIndex);
+    // Allow re-selection after a short tick so the highlight shows first
+    setTimeout(() => setSelected(null), 0);
   }
 
   if (!ready) {
@@ -261,6 +295,19 @@ export default function QuizPage() {
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <div className="w-full max-w-2xl">
 
+          {/* Back button — questions 2–12 only */}
+          {current > 0 && (
+            <button
+              onClick={handleBack}
+              className="flex items-center gap-1.5 text-slate/50 text-xs hover:text-slate/80 transition-colors mb-6 -ml-0.5"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 11L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              Back
+            </button>
+          )}
+
           {/* Pillar tag */}
           <div className="flex items-center gap-2 mb-5">
             <span className={`w-2.5 h-2.5 rounded-full ${pillarMeta.color}`} />
@@ -277,7 +324,11 @@ export default function QuizPage() {
           {/* Answer options */}
           <div className="flex flex-col gap-3">
             {question.options.map((option, i) => {
+              // Highlight the answer they previously chose when returning to a question
+              const prevAnswer = history[current - 1];
+              const wasPreviousAnswer = prevAnswer && prevAnswer.optionIndex === i;
               const isSelected = selected === i;
+
               return (
                 <button
                   key={i}
@@ -288,9 +339,11 @@ export default function QuizPage() {
                     transition-all duration-200
                     ${isSelected
                       ? "bg-golden text-navy border-golden font-semibold"
-                      : selected !== null
-                        ? "bg-navy/40 border-steel/20 text-slate/40 cursor-default"
-                        : "bg-navy/60 border-steel/30 text-slate hover:border-golden/60 hover:bg-navy/80 cursor-pointer"
+                      : wasPreviousAnswer
+                        ? "bg-navy/60 border-golden/40 text-slate cursor-pointer"
+                        : selected !== null
+                          ? "bg-navy/40 border-steel/20 text-slate/40 cursor-default"
+                          : "bg-navy/60 border-steel/30 text-slate hover:border-golden/60 hover:bg-navy/80 cursor-pointer"
                     }
                   `}
                 >
