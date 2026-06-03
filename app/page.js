@@ -4,15 +4,6 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-navy flex flex-col">
 
-      {/* ── Top bar ── */}
-      <header className="px-6 py-5 flex items-center justify-between max-w-5xl mx-auto w-full">
-        <span className="text-slate text-sm font-semibold tracking-widest uppercase">
-          Health Habit Consistency Quiz
-        </span>
-        <span className="text-slate text-xs tracking-wide hidden sm:block">
-          Proof &amp; Practice
-        </span>
-      </header>
 
       {/* ── Hero ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center">
