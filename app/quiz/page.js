@@ -211,10 +211,10 @@ export default function QuizPage() {
   const [selected, setSelected] = useState(null);
 
   // History stack: each entry is { optionIndex, pointsAdded, pillar }
-  // Lets us undo a selection when going back.
   const [history, setHistory] = useState([]);
-  // True only when user just pressed Back — gates the previous-answer highlight
-  const [navigatedBack, setNavigatedBack] = useState(false);
+  // Stores the optionIndex the user previously chose on a question they backed into.
+  // Set in handleBack, cleared on every forward selection.
+  const [prevAnswerIndex, setPrevAnswerIndex] = useState(null);
 
   // Use a ref so the timeout callback always sees fresh state
   const stateRef = useRef({ current, scores, questions, history });
@@ -241,7 +241,7 @@ export default function QuizPage() {
         router.push(ARCHETYPE_SLUGS[getArchetype(newScores)]);
       } else {
         setHistory([...hist, { optionIndex, pointsAdded: pts, pillar: q.pillar }]);
-        setNavigatedBack(false);
+        setPrevAnswerIndex(null);
         setScores(newScores);
         setCurrent(cur + 1);
         setSelected(null);
@@ -252,18 +252,15 @@ export default function QuizPage() {
   function handleBack() {
     if (current === 0 || history.length === 0) return;
     const prev = history[history.length - 1];
-    // Undo the score from the previous answer
+    // Undo the score and store which option they picked so we can highlight it
     setScores((sc) => ({
       ...sc,
       [prev.pillar]: sc[prev.pillar] - prev.pointsAdded,
     }));
     setHistory((h) => h.slice(0, -1));
-    setNavigatedBack(true);
+    setPrevAnswerIndex(prev.optionIndex);
+    setSelected(null);
     setCurrent((c) => c - 1);
-    // Pre-select the answer they previously chose
-    setSelected(prev.optionIndex);
-    // Allow re-selection after a short tick so the highlight shows first
-    setTimeout(() => setSelected(null), 0);
   }
 
   if (!ready) {
@@ -329,8 +326,7 @@ export default function QuizPage() {
           <div className="flex flex-col gap-3">
             {question.options.map((option, i) => {
               // Highlight the answer they previously chose when returning to a question
-              const prevAnswer = history[current - 1];
-              const wasPreviousAnswer = navigatedBack && prevAnswer && prevAnswer.optionIndex === i;
+              const wasPreviousAnswer = prevAnswerIndex === i;
               const isSelected = selected === i;
 
               return (
