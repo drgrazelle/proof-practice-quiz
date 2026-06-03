@@ -16,9 +16,13 @@ module.exports = {
         foreground: "var(--foreground)",
 
         // ── Primary Palette ────────────────────────────────────────
-        navy:   "#1A2B48",
-        steel:  "#5E7A9E",
+        navy:   "#1A2B4A",   // updated to user's confirmed dark blue
+        steel:  "#5B7BA8",   // updated to user's confirmed slate blue
         slate:  "#F4F7FA",
+
+        // ── Light theme ────────────────────────────────────────────
+        cream:  "#F9F8F5",   // off-white page background (light pages)
+        ink:    "#1A2B4A",   // same as navy — explicit alias for light-bg text
 
         // ── Accent Colors ──────────────────────────────────────────
         golden: "#E6C280",
