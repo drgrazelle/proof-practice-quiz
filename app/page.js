@@ -1,9 +1,8 @@
 import Link from "next/link";
 
-// ── Minimal line-style health icons (inline SVG, no external deps) ────────────
+// ── Minimal line-style health icons ──────────────────────────────────────────
 
 function IconBook() {
-  // Open book — represents "Proof" (knowledge, evidence)
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M14 6C14 6 10 4 5 5V22C10 21 14 23 14 23C14 23 18 21 23 22V5C18 4 14 6 14 6Z"
@@ -16,7 +15,6 @@ function IconBook() {
 }
 
 function IconRunningShoe() {
-  // Sneaker side view — represents "Practice" (doing, moving, consistency)
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M3 19C3 19 6 15 10 15L15 12L20 14H24C24 14 25 16 24 18H3Z"
@@ -29,7 +27,6 @@ function IconRunningShoe() {
 }
 
 function IconLeaf() {
-  // Leaf — represents "Purpose" (why, roots, growth)
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M8 22C8 22 9 14 14 10C19 6 23 7 23 7C23 7 23 12 19 16C15 20 8 22 8 22Z"
@@ -41,55 +38,45 @@ function IconLeaf() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col" style={{ backgroundColor: "#F9F8F5" }}>
+    <main className="min-h-screen bg-navy flex flex-col">
 
       {/* ── Hero ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center">
 
         {/* Eyebrow pill */}
-        <div
-          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-8 border"
-          style={{ backgroundColor: "#EEF1F7", borderColor: "#C2CEE0" }}
-        >
-          <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: "#E6C280" }} />
-          <span className="text-xs font-semibold tracking-widest uppercase" style={{ color: "#5B7BA8" }}>
+        <div className="inline-flex items-center gap-2 bg-navy border border-steel/40 rounded-full px-4 py-1.5 mb-8">
+          <span className="w-2 h-2 rounded-full bg-golden shrink-0" />
+          <span className="text-slate text-xs font-semibold tracking-widest uppercase">
             Free self-assessment
           </span>
         </div>
 
         {/* Headline */}
-        <h1
-          className="font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight max-w-3xl text-balance mb-6"
-          style={{ color: "#1A2B4A" }}
-        >
+        <h1 className="text-slate font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight max-w-3xl text-balance mb-6">
           There are{" "}
-          <span style={{ color: "#C8973A" }}>7 types of people</span>{" "}
+          <span className="text-golden">7 types of people</span>{" "}
           who struggle to make health habits stick.
           <br className="block" />
           <span className="block mt-6 sm:mt-8">
-            <span style={{ color: "#C8973A" }}>Which one are you?</span>
+            <span className="text-golden">Which one are you?</span>
           </span>
         </h1>
 
         {/* Subline */}
-        <p
-          className="text-base sm:text-lg mb-10 leading-relaxed text-center max-w-sm mx-auto"
-          style={{ color: "#5B7BA8" }}
-        >
+        <p className="text-slate text-base sm:text-lg mb-10 leading-relaxed text-center max-w-sm mx-auto">
           12 questions. 3 minutes. Find out which piece you&apos;re missing.
         </p>
 
         {/* CTA */}
         <Link
           href="/quiz"
-          className="inline-block font-bold text-base sm:text-lg px-8 py-4 rounded-lg shadow-md hover:brightness-105 active:scale-95 transition-all duration-150"
-          style={{ backgroundColor: "#E6C280", color: "#1A2B4A", border: "2px solid #1A2B4A" }}
+          className="inline-block bg-golden text-navy font-bold text-base sm:text-lg px-8 py-4 rounded-lg shadow-lg hover:brightness-105 active:scale-95 transition-all duration-150"
         >
-          Take the quiz →
+          Take the quiz
         </Link>
 
         {/* Reassurance */}
-        <p className="text-xs mt-5 tracking-wide" style={{ color: "#9AAFC8" }}>
+        <p className="text-slate/70 text-xs mt-5 tracking-wide">
           For self-reflection only. Not a clinical assessment.
         </p>
       </section>
@@ -98,44 +85,32 @@ export default function Home() {
       <section className="max-w-3xl mx-auto w-full px-6 pb-16">
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
 
-          {/* Proof */}
-          <div
-            className="flex flex-col items-center gap-3 rounded-xl p-4 sm:p-5 border"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DB" }}
-          >
+          <div className="flex flex-col items-center gap-2 bg-navy/60 border border-steel/20 rounded-xl p-4 sm:p-5">
             <IconBook />
-            <span className="font-bold text-xs sm:text-sm tracking-widest uppercase" style={{ color: "#C8973A" }}>
+            <span className="text-proof font-bold text-xs sm:text-sm tracking-widest uppercase">
               Proof
             </span>
-            <span className="text-xs text-center leading-relaxed hidden sm:block" style={{ color: "#5B7BA8" }}>
+            <span className="text-slate text-xs text-center leading-relaxed hidden sm:block">
               Do you know which habits actually work?
             </span>
           </div>
 
-          {/* Practice */}
-          <div
-            className="flex flex-col items-center gap-3 rounded-xl p-4 sm:p-5 border"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DB" }}
-          >
+          <div className="flex flex-col items-center gap-2 bg-navy/60 border border-steel/20 rounded-xl p-4 sm:p-5">
             <IconRunningShoe />
-            <span className="font-bold text-xs sm:text-sm tracking-widest uppercase" style={{ color: "#7DBFAB" }}>
+            <span className="text-practice font-bold text-xs sm:text-sm tracking-widest uppercase">
               Practice
             </span>
-            <span className="text-xs text-center leading-relaxed hidden sm:block" style={{ color: "#5B7BA8" }}>
+            <span className="text-slate text-xs text-center leading-relaxed hidden sm:block">
               Do you have the skills to stay consistent when life gets hard?
             </span>
           </div>
 
-          {/* Purpose */}
-          <div
-            className="flex flex-col items-center gap-3 rounded-xl p-4 sm:p-5 border"
-            style={{ backgroundColor: "#FFFFFF", borderColor: "#E8E4DB" }}
-          >
+          <div className="flex flex-col items-center gap-2 bg-navy/60 border border-steel/20 rounded-xl p-4 sm:p-5">
             <IconLeaf />
-            <span className="font-bold text-xs sm:text-sm tracking-widest uppercase" style={{ color: "#9B8FC4" }}>
+            <span className="text-purpose font-bold text-xs sm:text-sm tracking-widest uppercase">
               Purpose
             </span>
-            <span className="text-xs text-center leading-relaxed hidden sm:block" style={{ color: "#5B7BA8" }}>
+            <span className="text-slate text-xs text-center leading-relaxed hidden sm:block">
               Do you have a reason deep enough that holds?
             </span>
           </div>
@@ -144,8 +119,8 @@ export default function Home() {
       </section>
 
       {/* ── Footer ── */}
-      <footer className="px-6 py-5" style={{ borderTop: "1px solid #DDD9D0" }}>
-        <p className="text-xs text-center" style={{ color: "#9AAFC8" }}>
+      <footer className="border-t border-steel/20 px-6 py-5">
+        <p className="text-slate/60 text-xs text-center">
           &copy; 2026 Dr. Grazelle &mdash; Proof &amp; Practice. Not medical advice.
         </p>
       </footer>
