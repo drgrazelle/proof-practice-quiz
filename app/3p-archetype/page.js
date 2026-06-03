@@ -59,8 +59,8 @@ export default function ArchetypeMapPage() {
               The 3P Framework
             </h1>
             <p className="text-slate/70 text-sm leading-relaxed">
-              Most people who struggle with health consistency aren't missing willpower.
-              They're missing one piece of a three-part system.
+              Most people who struggle with health consistency aren&apos;t missing willpower.
+              They&apos;re missing one piece of a three-part system.
             </p>
           </div>
 
