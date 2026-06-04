@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://quiz.drgrazelle.com"),
   title: "Health Habit Consistency Quiz | Proof & Practice",
   description:
     "12 questions. 3 minutes. Find out which piece of health consistency you're missing.",
@@ -16,6 +17,7 @@ export const metadata = {
     description:
       "12 questions. 3 minutes. Find out which piece of health consistency you're missing.",
     siteName: "Proof & Practice",
+    url: "https://quiz.drgrazelle.com",
     type: "website",
     images: [
       {

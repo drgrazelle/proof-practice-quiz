@@ -32,7 +32,7 @@ export async function GET() {
             gap: "20px",
           }}
         >
-          <span style={{ color: "#F4F7FA" }}>Here&apos;s why you keep</span>
+          <span style={{ color: "#F4F7FA" }}>{"Here's why you keep"}</span>
           <span style={{ color: "#E6C280" }}>starting over.</span>
         </div>
 
