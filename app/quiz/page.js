@@ -10,45 +10,45 @@ const RAW_QUESTIONS = [
   {
     id: 1,
     pillar: "proof",
-    text: "A supplement is everywhere right now and a friend swears by it. What do you do?",
+    text: "A supplement was everywhere recently and a friend swore by it. What did you actually do?",
     options: [
-      { text: "Try it. If someone I trust is seeing results, it's worth a shot.", points: 0 },
-      { text: "Research it thoroughly before spending any money.", points: 1 },
-      { text: "Look for actual studies, not testimonials, before deciding.", points: 2 },
-      { text: "Ask myself whether my fundamentals are solid first. A supplement probably isn't the gap.", points: 3 },
+      { text: "Tried it. Someone I trusted was seeing results, and that felt like reason enough to give it a shot.", score: 0 },
+      { text: "Researched it thoroughly before spending any money. I wanted to understand what I was putting in my body.", score: 1 },
+      { text: "Looked for actual studies rather than testimonials. I didn't want to spend money on something unproven.", score: 2 },
+      { text: "Didn't really engage with it. I was more focused on whether I was sleeping and eating well that week than on anything new to add.", score: 3 },
     ],
   },
   {
     id: 2,
     pillar: "proof",
-    text: "Two articles, same week. One says a food is protective. The other says it causes inflammation. Both cite studies. How do you decide?",
+    text: "Two articles came out recently. One said a food was protective. The other said it caused inflammation. Both cited studies. What did you do?",
     options: [
-      { text: "Go with what seems to work for my body. Research keeps changing anyway.", points: 0 },
-      { text: "Follow the most recent or largest study for now.", points: 1 },
-      { text: "Find sources without a financial stake and look at the overall evidence, not just one study.", points: 2 },
-      { text: "Focus on overall diet quality. One food rarely makes or breaks anything.", points: 3 },
+      { text: "Went with what seemed to work for my body. The research changes constantly anyway, so I stopped trying to keep up.", score: 0 },
+      { text: "Followed the most recent or largest study for now. It felt like the most reasonable approach until more evidence came in.", score: 1 },
+      { text: "Didn't spend much time on it. One food rarely changes the picture when the overall diet is already solid.", score: 2 },
+      { text: "Looked for sources without a financial stake and tried to understand the overall body of evidence, not just one study.", score: 3 },
     ],
   },
   {
     id: 3,
     pillar: "proof",
-    text: "A visibly healthy friend shares her exact health protocol and says it changed everything. Your honest reaction?",
+    text: "Think about the last time someone shared their exact health protocol and said it changed everything. What was your honest first reaction?",
     options: [
-      { text: "Genuinely interested. If it's working for her, there's probably something to it.", points: 0 },
-      { text: "Curious but I'd want to understand why it works before trying it.", points: 1 },
-      { text: "Cautious. I'd want to know if it's actually supported by research.", points: 2 },
-      { text: "I'd wonder whether it's the protocol, or her sleep, food, and movement finally being solid underneath it.", points: 3 },
+      { text: "Genuinely interested. If it was working for them, there was probably something real behind it worth exploring.", score: 0 },
+      { text: "Curious but cautious. I wanted to understand the mechanism before trying anything myself.", score: 1 },
+      { text: "Skeptical. I wanted to know whether any of this was actually backed by research before getting excited.", score: 2 },
+      { text: "Less interested in the protocol itself, more curious about what else had changed in their life. These things rarely work in isolation.", score: 3 },
     ],
   },
   {
     id: 4,
     pillar: "proof",
-    text: "You're starting over after a long break. Where do you begin?",
+    text: "Think about the last time you started over after a long break from your health habits. Where did you actually begin?",
     options: [
-      { text: "Find a comprehensive program so I don't have to figure it out myself.", points: 0 },
-      { text: "Research the most effective current approaches before committing.", points: 1 },
-      { text: "Go back to basics. Sleep, food quality, movement. I know what the foundation is.", points: 2 },
-      { text: "Pick one sustainable thing and start there, even if it feels too simple.", points: 3 },
+      { text: "Found a structured program to follow. I didn't want to figure it out myself when I was already low on motivation.", score: 0 },
+      { text: "Spent time researching the most effective current approaches before committing to anything new.", score: 1 },
+      { text: "Went back to basics. Sleep, food quality, movement. I knew those were the foundation and started there.", score: 2 },
+      { text: "Picked one small thing and started with that, even though it felt almost too simple to matter.", score: 3 },
     ],
   },
 
@@ -56,45 +56,45 @@ const RAW_QUESTIONS = [
   {
     id: 5,
     pillar: "practice",
-    text: "The week fell apart. Work, stress, no time. You missed everything. What happens next?",
+    text: "Think about the last week that completely fell apart. Work, stress, no time. You missed everything. What actually happened next?",
     options: [
-      { text: "Start fresh Monday when things settle down.", points: 0 },
-      { text: "Figure out what went wrong so I can plan better next time.", points: 1 },
-      { text: "Salvage something small before the week is over.", points: 2 },
-      { text: "Keep going at whatever level I can reach right now.", points: 3 },
+      { text: "Waited until Monday when things calmed down. Starting mid-chaos never seemed to work for me anyway.", score: 0 },
+      { text: "Tried to figure out what went wrong so I could build a better plan before attempting it again.", score: 1 },
+      { text: "Salvaged something small before the week ended. Even one thing felt better than a complete wipeout.", score: 2 },
+      { text: "Kept going at whatever level I could actually reach in that moment, even if it barely resembled the original plan.", score: 3 },
     ],
   },
   {
     id: 6,
     pillar: "practice",
-    text: "You planned 45 minutes to exercise. You have 15. What do you do?",
+    text: "The last time you planned 45 minutes to exercise and only had 15 — what did you actually do?",
     options: [
-      { text: "Skip it. 15 minutes isn't worth disrupting the plan.", points: 0 },
-      { text: "Feel conflicted and end up not doing much while deciding.", points: 1 },
-      { text: "Do 15 minutes. It still counts.", points: 2 },
-      { text: "Figure out which part matters most right now and do that.", points: 3 },
+      { text: "Skipped it. A 15-minute workout felt pointless when the whole session was already compromised.", score: 0 },
+      { text: "Felt genuinely torn about it and spent most of those 15 minutes deciding, then didn't end up doing much.", score: 1 },
+      { text: "Did the 15 minutes. It wasn't what I planned but it still counted for something.", score: 2 },
+      { text: "Figured out the one part that mattered most given the time I had, did that, and moved on with my day.", score: 3 },
     ],
   },
   {
     id: 7,
     pillar: "practice",
-    text: "Your life shifts significantly. New job, new baby, a move. The routine that was working no longer fits. What happens to your health habits?",
+    text: "Think about the last significant life shift you went through. New job, new baby, a move. What actually happened to your health habits?",
     options: [
-      { text: "Put them on hold until things settle enough to do them properly.", points: 0 },
-      { text: "Design a new routine that fits before I start again.", points: 1 },
-      { text: "Find the smallest version of each habit that still counts and keep going.", points: 2 },
-      { text: "Adjust the approach to fit the new reality. The goal hasn't changed.", points: 3 },
+      { text: "Put them on hold until things settled enough to do them properly. I needed the right conditions first.", score: 0 },
+      { text: "Took time to design a new routine that actually fit the new situation before committing to anything.", score: 1 },
+      { text: "Kept the smallest version of each habit I could manage. A short walk still counted. Something was better than nothing.", score: 2 },
+      { text: "Kept going in whatever form still fit the new reality. It wasn't pretty but the thread stayed unbroken.", score: 3 },
     ],
   },
   {
     id: 8,
     pillar: "practice",
-    text: "Two weeks have passed. No crisis. Life just got busy and your habits quietly disappeared. How do you come back?",
+    text: "Two weeks passed recently with no real crisis. Life just got busy and your habits quietly disappeared. How did you actually come back?",
     options: [
-      { text: "Fresh start. New plan, new week, full commitment.", points: 0 },
-      { text: "Understand what caused the drift before trying again.", points: 1 },
-      { text: "Pick back up where I left off without making it a bigger deal than it is.", points: 2 },
-      { text: "Start with the easiest habit first, just to get back in motion.", points: 3 },
+      { text: "Declared a fresh start with a new plan. I needed a clean slate to feel like I was actually recommitting.", score: 0 },
+      { text: "Spent time understanding what caused the drift before trying again. I didn't want to repeat the same pattern.", score: 1 },
+      { text: "Picked back up where I left off without making it a bigger deal than it needed to be.", score: 2 },
+      { text: "Started with the one easiest habit just to get back in motion, then let the rest follow from there.", score: 3 },
     ],
   },
 
@@ -102,45 +102,45 @@ const RAW_QUESTIONS = [
   {
     id: 9,
     pillar: "purpose",
-    text: "Three weeks in. The initial energy is completely gone. It's just hard now. What keeps you going?",
+    text: "Think about the last time you were three weeks into a health change and the initial motivation was completely gone. What actually kept you going — or didn't?",
     options: [
-      { text: "Honestly, not much. When motivation fades, things usually fade with it.", points: 0 },
-      { text: "I remind myself of my goal and try to push through.", points: 1 },
-      { text: "I reconnect with why I started. Something that matters more than the discomfort.", points: 2 },
-      { text: "I don't rely on motivation. I know what this is in service of.", points: 3 },
+      { text: "Honestly not much. When the feeling left, the habits tended to go with it, and I waited for it to come back.", score: 0 },
+      { text: "Reminded myself of the goal and tried to push through. Some days it worked and some days it really didn't.", score: 1 },
+      { text: "Went back to the reason I started. There was something underneath the goal that mattered more than how I felt that day.", score: 2 },
+      { text: "Kept going without relying on how I felt about it. What I was doing it for hadn't changed just because the energy did.", score: 3 },
     ],
   },
   {
     id: 10,
     pillar: "purpose",
-    text: "Someone genuinely asks why you prioritize your health. What's your honest answer?",
+    text: "The last time someone genuinely asked why you prioritize your health, what did you actually say?",
     options: [
-      { text: "I'm not sure I could give a clear answer right now.", points: 0 },
-      { text: "I want to feel good, have more energy, and stay at a healthy weight.", points: 1 },
-      { text: "I want to be healthy enough to show up fully for the people and things that matter most.", points: 2 },
-      { text: "My health is in service of the people I love and the life I'm building with them. They're not separate from each other.", points: 3 },
+      { text: "Something vague. I didn't have a clear answer ready and realized I hadn't really thought it through.", score: 0 },
+      { text: "That I wanted to feel good, have more energy, and stay at a healthy weight. The usual reasons.", score: 1 },
+      { text: "That I wanted to be healthy enough to show up fully for the people and things that mattered most to me.", score: 2 },
+      { text: "That my health and the people I love aren't separate things. Taking care of myself is how I take care of them.", score: 3 },
     ],
   },
   {
     id: 11,
     pillar: "purpose",
-    text: "The external thing driving your health habits is gone. The health scare resolved, the event passed, the urgency lifted. What happens to your habits?",
+    text: "Think about a time when the external pressure driving your health habits disappeared. The health scare resolved, the event passed, the urgency lifted. What actually happened to your habits?",
     options: [
-      { text: "They quietly disappear. I didn't realize how much that pressure was holding things together.", points: 0 },
-      { text: "They get harder. I know I should keep going but the drive isn't there.", points: 1 },
-      { text: "They slow down but don't stop. My reason goes deeper than that one thing.", points: 2 },
-      { text: "They stay mostly intact. What's driving me runs deeper than the one thing that started it.", points: 3 },
+      { text: "They quietly disappeared with the pressure. I hadn't realized how much that external thing was holding everything together.", score: 0 },
+      { text: "They got harder to maintain. I knew I should keep going but the drive just wasn't there without the urgency.", score: 1 },
+      { text: "They slowed down but didn't stop. The reason I was doing it went deeper than that one thing.", score: 2 },
+      { text: "They stayed mostly intact. Whatever was really driving me had nothing to do with the thing that first got me started.", score: 3 },
     ],
   },
   {
     id: 12,
     pillar: "purpose",
-    text: "You're going through the motions. Doing the habits, but the meaning behind them is completely gone. What do you do?",
+    text: "Think about the last time you were going through the motions with your health habits — doing them, but the meaning was completely gone. What did you actually do?",
     options: [
-      { text: "Wait for the feeling to come back. Or don't, and things quietly drift.", points: 0 },
-      { text: "Try something new. Different workout, new approach, hoping it sparks something.", points: 1 },
-      { text: "Sit with it and try to reconnect with what originally made this matter.", points: 2 },
-      { text: "Remind myself the feeling isn't the point. Showing up is the point.", points: 3 },
+      { text: "Waited for the feeling to come back. Sometimes it did, sometimes it didn't, and things drifted in the meantime.", score: 0 },
+      { text: "Tried switching something up. Different workout, new approach, hoping a change would spark something again.", score: 1 },
+      { text: "Sat with it and tried to reconnect with what had originally made it matter. It took a while but I went looking for it.", score: 2 },
+      { text: "Made my usual meal. Did my usual walk. Didn't try to feel anything about it. Sometimes that's just what it looks like.", score: 3 },
     ],
   },
 ];
@@ -170,9 +170,9 @@ function shuffleArray(arr) {
 }
 
 function getArchetype(scores) {
-  const proofPresent    = scores.proof    >= 6;
-  const practicePresent = scores.practice >= 6;
-  const purposePresent  = scores.purpose  >= 6;
+  const proofPresent    = scores.proof    >= 9;
+  const practicePresent = scores.practice >= 9;
+  const purposePresent  = scores.purpose  >= 9;
 
   if (!proofPresent && !practicePresent && !purposePresent) return "restarter";
   if ( proofPresent && !practicePresent && !purposePresent) return "reader";
@@ -234,7 +234,7 @@ export default function QuizPage() {
     setTimeout(() => {
       const { current: cur, scores: sc, questions: qs, history: hist } = stateRef.current;
       const q   = qs[cur];
-      const pts = q.options[optionIndex].points;
+      const pts = q.options[optionIndex].score;
       const newScores = { ...sc, [q.pillar]: sc[q.pillar] + pts };
 
       if (cur + 1 >= total) {
