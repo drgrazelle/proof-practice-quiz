@@ -53,14 +53,15 @@ export default function Home() {
 
         {/* Headline */}
         <h1 className="text-slate font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight max-w-3xl text-balance mb-4">
-          There are 7 types of people keep restarting their health habits.{" "}
-          <span className="text-golden">1 type doesn&apos;t.</span>
-        </h1>
-
-        {/* Subheadline */}
-        <p className="text-golden font-bold text-xl sm:text-2xl mb-3">
+          There are{" "}
+          <span className="text-golden">7 types of people</span>{" "}
+          keep restarting their health habits.{" "}
+          <span className="text-golden">1 type</span>{" "}
+          doesn&apos;t.
+          <br />
+          <br />
           Which one are you?
-        </p>
+        </h1>
 
         {/* 12 questions line */}
         <p className="text-slate/70 text-sm sm:text-base mb-10">
