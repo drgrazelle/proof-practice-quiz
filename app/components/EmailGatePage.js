@@ -99,19 +99,24 @@ export default function EmailGatePage({ embedScript }) {
                 className="text-xs font-semibold tracking-widest uppercase"
                 style={{ color: "#E6C280" }}
               >
-                Pattern identified
+                Your result is ready
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="text-slate font-extrabold text-3xl sm:text-4xl leading-tight tracking-tight fade-up-2">
-              We found your pattern.
+              We found your type.
             </h1>
 
-            {/* Subtext */}
+            {/* Subheading */}
+            <p className="text-slate font-semibold text-base leading-snug fade-up-3">
+              Where should we send your result?
+            </p>
+
+            {/* Body text */}
             <p className="text-slate/60 text-base leading-relaxed fade-up-3">
-              Where should we send your result? Your habit consistency profile,
-              what&apos;s been getting in the way, and your specific next step.
+              Your specific next step — plus what&apos;s been getting in the way
+              and why it keeps happening.
             </p>
           </div>
 
@@ -120,9 +125,9 @@ export default function EmailGatePage({ embedScript }) {
 
           {/* Disclaimer */}
           <p className="text-slate/35 text-xs leading-relaxed fade-up-5">
-            You&apos;ll also get Proof &amp; Practice, a weekly newsletter on
-            evidence-based health for people too busy for perfection.
-            Unsubscribe anytime.
+            You&apos;ll also get Proof &amp; Practice — every Saturday, one
+            evidence-backed idea you can actually use to be consistent with your
+            habits. Unsubscribe anytime.
           </p>
 
         </div>
