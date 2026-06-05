@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} font-sans antialiased`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
