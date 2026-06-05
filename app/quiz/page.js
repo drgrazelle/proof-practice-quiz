@@ -274,40 +274,49 @@ export default function QuizPage() {
   return (
     <main className="min-h-screen bg-navy flex flex-col">
 
-      {/* ── Top bar ── */}
-      <header className="px-6 py-5 flex items-center justify-between max-w-2xl mx-auto w-full">
-        <span className="text-slate text-sm font-semibold tracking-widest uppercase">
-          Health Habit Consistency Quiz
-        </span>
-        <span className="text-slate/60 text-xs">
-          Question {current + 1} of {total}
-        </span>
-      </header>
+      {/* ── Sticky progress bar + header wrapper ── */}
+      <div className="sticky top-0 z-10 bg-navy">
 
-      {/* ── Progress bar ── */}
-      <div className="w-full bg-steel/20 h-1">
-        <div
-          className="h-1 bg-golden transition-all duration-500 ease-out"
-          style={{ width: `${progress}%` }}
-        />
+        {/* ── Progress bar ── */}
+        <div className="w-full bg-steel/20 h-2">
+          <div
+            className="h-2 bg-golden transition-all duration-500 ease-out"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        {/* ── Title ── */}
+        <header className="px-6 py-5 flex items-center justify-center max-w-2xl mx-auto w-full">
+          <span className="text-slate text-sm font-semibold tracking-widest uppercase">
+            Health Habit Consistency Quiz
+          </span>
+        </header>
+
       </div>
 
       {/* ── Question card ── */}
       <section className="flex-1 flex flex-col items-center justify-center px-6 py-12">
         <div className="w-full max-w-2xl">
 
-          {/* Back button — questions 2–12 only */}
-          {current > 0 && (
-            <button
-              onClick={handleBack}
-              className="flex items-center gap-1.5 text-slate/50 text-xs hover:text-slate/80 transition-colors mb-6 -ml-0.5"
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 11L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              Back
-            </button>
-          )}
+          {/* Back button + question counter — same row, all 12 questions */}
+          <div className="flex items-center justify-between mb-6">
+            {current > 0 ? (
+              <button
+                onClick={handleBack}
+                className="flex items-center gap-1.5 text-slate/50 text-xs hover:text-slate/80 transition-colors -ml-0.5"
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 11L5 7L9 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Back
+              </button>
+            ) : (
+              <span />
+            )}
+            <span className="text-slate/60 text-xs">
+              Question {current + 1} of {total}
+            </span>
+          </div>
 
           {/* Pillar tag */}
           <div className="flex items-center gap-2 mb-5">
