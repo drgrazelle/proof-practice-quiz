@@ -66,24 +66,25 @@ export default function FullReportSentPage() {
               You&apos;re in
             </p>
             <h1 className="text-navy font-extrabold text-2xl sm:text-3xl leading-tight tracking-tight mb-3">
-              Your report is on its way.
+              Your result is on its way.
             </h1>
             <p className="text-navy/70 text-sm leading-relaxed max-w-sm mx-auto">
-              Check your inbox — your personalized breakdown is headed there now.
+              Check your inbox — it usually arrives within 5 minutes. If you don&apos;t see it, check spam and move it to your inbox.
             </p>
           </div>
         </div>
 
-        {/* What&apos;s inside */}
+        {/* What's inside */}
         <div className="w-full">
           <p className="text-slate/50 text-xs font-semibold tracking-widest uppercase mb-4">
             What&apos;s inside
           </p>
           <ul className="flex flex-col gap-4">
             {[
-              "The full picture of your archetype — strengths, blind spots, and patterns",
-              "How all types compare and where you sit",
-              "Your specific next steps based on your scores",
+              "Which type you are — and why it fits",
+              "What's actually been getting in the way",
+              "One specific thing to do this week",
+              "Where you sit among all 8 types",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
                 <span
@@ -95,11 +96,6 @@ export default function FullReportSentPage() {
             ))}
           </ul>
         </div>
-
-        {/* Spam note */}
-        <p className="text-slate/40 text-xs text-center">
-          Don&apos;t see it? Check your spam folder and move it to your inbox.
-        </p>
 
       </div>
 
