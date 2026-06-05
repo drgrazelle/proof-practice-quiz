@@ -2,6 +2,10 @@
 const nextConfig = {
   async redirects() {
     return [
+      // ── Source tracking ──────────────────────────────────────────────────
+      { source: "/reddit",       destination: "/", permanent: false },
+
+      // ── Legacy slug redirects ────────────────────────────────────────────
       { source: "/restarter",    destination: "/r-4291",  permanent: true },
       { source: "/reader",       destination: "/rd-7134", permanent: true },
       { source: "/optimizer",    destination: "/op-5820", permanent: true },
