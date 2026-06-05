@@ -9,11 +9,11 @@ const inter = Inter({
 
 export const metadata = {
   metadataBase: new URL("https://quiz.drgrazelle.com"),
-  title: "Health Habit Consistency Quiz | Proof & Practice",
+  title: "Health Habit Consistency Quiz",
   description:
     "12 questions. 3 minutes. Find out which piece of health consistency you're missing.",
   openGraph: {
-    title: "Health Habit Consistency Quiz | Proof & Practice",
+    title: "Health Habit Consistency Quiz",
     description:
       "12 questions. 3 minutes. Find out which piece of health consistency you're missing.",
     siteName: "Proof & Practice",
@@ -30,7 +30,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Health Habit Consistency Quiz | Proof & Practice",
+    title: "Health Habit Consistency Quiz",
     description:
       "12 questions. 3 minutes. Find out which piece of health consistency you're missing.",
     images: ["/api/og"],
