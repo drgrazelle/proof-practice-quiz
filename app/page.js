@@ -52,19 +52,19 @@ export default function Home() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-slate font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight max-w-3xl text-balance mb-6">
-          There are{" "}
-          <span className="text-golden">7 types of people</span>{" "}
-          who struggle to make health habits stick.
-          <br className="block" />
-          <span className="block mt-6 sm:mt-8">
-            <span className="text-golden">Which one are you?</span>
-          </span>
+        <h1 className="text-slate font-extrabold text-2xl sm:text-3xl lg:text-4xl leading-tight tracking-tight max-w-3xl text-balance mb-4">
+          There are 7 types of people keep restarting their health habits.{" "}
+          <span className="text-golden">1 type doesn&apos;t.</span>
         </h1>
 
-        {/* Subline */}
-        <p className="text-slate text-base sm:text-lg mb-10 leading-relaxed text-center max-w-sm mx-auto">
-          12 questions. 3 minutes. Find out which piece you&apos;re missing.
+        {/* Subheadline */}
+        <p className="text-golden font-bold text-xl sm:text-2xl mb-3">
+          Which one are you?
+        </p>
+
+        {/* 12 questions line */}
+        <p className="text-slate/70 text-sm sm:text-base mb-10">
+          12 questions. 3 minutes.
         </p>
 
         {/* CTA */}
