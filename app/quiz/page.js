@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import posthog from "posthog-js";
 
 // ── Raw questions ─────────────────────────────────────────────────────────────
 
@@ -204,6 +205,7 @@ export default function QuizPage() {
       RAW_QUESTIONS.map((q) => ({ ...q, options: shuffleArray(q.options) }))
     );
     setReady(true);
+    posthog.capture("quiz_started");
   }, []);
 
   const [current, setCurrent]   = useState(0);
@@ -233,12 +235,32 @@ export default function QuizPage() {
 
     setTimeout(() => {
       const { current: cur, scores: sc, questions: qs, history: hist } = stateRef.current;
-      const q   = qs[cur];
-      const pts = q.options[optionIndex].score;
+      const q      = qs[cur];
+      const option = q.options[optionIndex];
+      const pts    = option.score;
       const newScores = { ...sc, [q.pillar]: sc[q.pillar] + pts };
 
+      // Track every answer
+      posthog.capture("quiz_answer", {
+        question_number: cur + 1,
+        question_id:     q.id,
+        question_pillar: q.pillar,
+        answer_text:     option.text,
+        answer_score:    pts,
+      });
+
       if (cur + 1 >= total) {
-        router.push(ARCHETYPE_SLUGS[getArchetype(newScores)]);
+        const archetype = getArchetype(newScores);
+
+        // Track quiz completion
+        posthog.capture("quiz_completed", {
+          archetype,
+          proof_score:    newScores.proof,
+          practice_score: newScores.practice,
+          purpose_score:  newScores.purpose,
+        });
+
+        router.push(ARCHETYPE_SLUGS[archetype]);
       } else {
         setHistory([...hist, { optionIndex, pointsAdded: pts, pillar: q.pillar }]);
         setPrevAnswerIndex(null);
@@ -252,7 +274,6 @@ export default function QuizPage() {
   function handleBack() {
     if (current === 0 || history.length === 0) return;
     const prev = history[history.length - 1];
-    // Undo the score and store which option they picked so we can highlight it
     setScores((sc) => ({
       ...sc,
       [prev.pillar]: sc[prev.pillar] - prev.pointsAdded,
@@ -334,7 +355,6 @@ export default function QuizPage() {
           {/* Answer options */}
           <div className="flex flex-col gap-3">
             {question.options.map((option, i) => {
-              // Highlight the answer they previously chose when returning to a question
               const wasPreviousAnswer = prevAnswerIndex === i;
               const isSelected = selected === i;
 
